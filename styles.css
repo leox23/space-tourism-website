@@ -5,6 +5,11 @@ html {
     padding: 0;
     height: 100%;
     width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background: url("assets/home/background-home-mobile.jpg");
 }
 
 /* ----------- sidebar styling --------------- */
@@ -13,7 +18,7 @@ html {
     width: 254px;
     margin-right: -254px;
     height: 100%;
-    background: gray;
+    backdrop-filter: blur(50px);
     overflow: hidden;
     transition: .6s all;
 }
@@ -22,6 +27,20 @@ html {
     margin-right: 0;
 }
 
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.link-page:nth-child(1) {
+    margin-top: 118px;
+}
+
+.link-page {
+    margin-top: 33px;
+}
 
 /* -------------- Burger styling ----------------- */
 .btn {
@@ -30,8 +49,6 @@ html {
     position: absolute;
     width: 24px;
     height: 21px;
-    background: black;
-    border: 1px solid #fa8231;
     transform: rotate(-0.5turn);
     transition: all 0.5s ease-out;
 }
@@ -41,10 +58,8 @@ html {
 .close-btn {
     top: 22px;
     right: 17;
-    width: 24px;
+    width: 21px;
     height: 21px;
-    background: black;
-    border: 1px solid #fa8231;
     transform: rotate(0.5turn);
     transition: all 0.5s ease-out;
 }

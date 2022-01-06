@@ -1,65 +1,167 @@
-/* ------------ overall body and page styling ------------ */
-body,
-html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden;
+@import url("https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap");
+
+body {
+  height: 50%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 body {
-    background: url("assets/home/background-home-mobile.jpg");
+  background: url("assets/home/background-home-mobile.jpg") no-repeat;
 }
 
-/* ----------- sidebar styling --------------- */
-.sidebar {
-    float: right;
-    width: 254px;
-    margin-right: -254px;
-    height: 100%;
-    backdrop-filter: blur(50px);
-    overflow: hidden;
-    transition: .6s all;
-}
-
-.sidebar-open {
-    margin-right: 0;
-}
-
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-}
-
-.link-page:nth-child(1) {
-    margin-top: 118px;
-}
-
-.link-page {
-    margin-top: 33px;
+/*
+######################################################################
+               Superior part
+######################################################################
+*/
+#logo {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 24px;
+  left: 24px;
 }
 
 /* -------------- Burger styling ----------------- */
 .btn {
-    top: 22px;
-    right: 17px;
-    position: absolute;
-    width: 24px;
-    height: 21px;
-    transform: rotate(-0.5turn);
-    transition: all 0.5s ease-out;
+  width: 24px;
+  height: 21px;
+  position: absolute;
+  top: 22px;
+  right: 17px;
+  transform: rotate(-0.5turn);
+  transition: all 0.5s ease-out;
 }
 
-
-/* ----------- close btn ------------- */
+/* ----------- close btn style------------- */
 .close-btn {
-    top: 22px;
-    right: 17;
-    width: 21px;
-    height: 21px;
-    transform: rotate(0.5turn);
-    transition: all 0.5s ease-out;
+  width: 21px;
+  height: 21px;
+  top: 22px;
+  right: 17;
+  z-index: 1;
+  transform: rotate(0.5turn);
+  transition: all 0.5s ease-out;
+}
+
+main {
+  margin-top: 0px;
+  padding-top: 13.97vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1,
+.explore {
+  font-family: "Bellefair", serif;
+}
+
+h1 {
+  margin: 0px;
+  padding: 0.5rem 0rem;
+  color: white;
+  font-size: 5rem;
+  font-weight: 400;
+}
+
+#textBeforeTitle,
+.link-page {
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+#textBeforeTitle,
+#textAfterTitle {
+  color: #d0d6f9;
+}
+
+#textBeforeTitle {
+  letter-spacing: 0.169rem;
+  font-size: 1rem;
+}
+
+#textAfterTitle {
+  margin: 0px;
+  padding: 0.5625rem 1.5rem;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.938rem;
+  text-align: center;
+  line-height: 1.56rem;
+}
+
+.explore {
+  width: 150px;
+  height: 150px;
+  background: white;
+  border-radius: 100px;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 11.1vh;
+}
+
+.explore > p {
+  color: #0b0d17;
+  font-size: 20px;
+  letter-spacing: 1.25px;
+  display: block;
+}
+
+/*
+######################################################################
+               Sidebar
+######################################################################
+*/
+.sidebar {
+  width: 0px;
+  position: absolute;
+  right: -254px;
+  overflow: hidden;
+  z-index: 0;
+  transition: 0.6s all;
+}
+
+.sidebar-open {
+  width: 254px;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  backdrop-filter: blur(50px);
+}
+
+.sidebarChildContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.link-page:nth-child(1) {
+  margin-top: 118px;
+}
+
+.link-page {
+  width: 100%;
+  margin-top: 33px;
+  padding-left: 32px;
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  letter-spacing: 0.169rem;
+  text-decoration: none;
+  /* estilo de borde para colocar segun en la pagina que este
+  border-right: 4px solid #fff; */
+}
+
+.link-page > span {
+  font-weight: 700;
 }

@@ -70,6 +70,7 @@ h1 {
   color: white;
   font-size: 5rem;
   font-weight: 400;
+  text-transform: uppercase;
 }
 
 #textBeforeTitle,
@@ -85,6 +86,7 @@ h1 {
 #textBeforeTitle {
   letter-spacing: 0.169rem;
   font-size: 1rem;
+  text-transform: uppercase;
 }
 
 #textAfterTitle {
@@ -112,6 +114,7 @@ h1 {
   color: #0b0d17;
   font-size: 20px;
   letter-spacing: 1.25px;
+  text-transform: uppercase;
   display: block;
 }
 

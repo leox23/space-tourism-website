@@ -16,8 +16,7 @@
   <title>Space tourism website</title>
 </head>
 
-<body onLoad="extractJSON('data.json', (err, data) => {
-              declare(data)
+<body onLoad="actualPage = 0; extractJSON('data.json', (err, data) => {
               console.log(data);
 });">
   <nav class="sidebar">
@@ -31,17 +30,16 @@
   <img src="assets/shared/logo.svg" id="logo" alt="logo of webpage">
   <img src="assets/shared/icon-hamburger.svg" class="btn" id="btn" alt="hamburger button">
   <main>
-    <p id="textBeforeTitle"><span></span>So, you want to travel to</p>
-    <h1 id="main-title">Space</h1>
-    <p id="textAfterTitle">Let’s face it; if you want to go to space, you might as well genuinely go to
-      outer space and not hover kind of on the edge of it. Well sit back, and relax
-      because we’ll give you a truly out of this world experience!</p>
+    <p id="textBeforeTitle"><span></span></p>
+    <h1 id="main-title"></h1>
+    <p id="textAfterTitle"></p>
     <div class="explore">
-      <p>Explore</p>
+      <p id="exploreText"></p>
     </div>
   </main>
   <!--  JQuery CDN link  -->
   <script src="lib/jquery-3.6.0.min.js"></script>
+  <script type="application/json" src="data.json"></script>
   <script src="script.js"></script>
 </body>
 

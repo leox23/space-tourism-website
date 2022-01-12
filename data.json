@@ -1,4 +1,3 @@
-
 {
   "home": [
     {
@@ -114,9 +113,11 @@
     }
   ],
   "subHeadings": [
-    "So, you want to travel to",
-    "Pick your destination",
-    "Meet your crew",
-    "Space launch 101"
+    {
+    "home" : "So, you want to travel to",
+    "destination" : "Pick your destination",
+    "crew" : "Meet your crew",
+    "technology" : "Space launch 101"
+    }
   ]
 }

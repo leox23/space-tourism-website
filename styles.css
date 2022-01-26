@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap");
 
-body {
-  height: 50%;
+html body {
+  border: 0px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -33,7 +33,7 @@ body {
 .btn {
   width: 24px;
   height: 21px;
-  position: absolute;
+  position: fixed;
   top: 22px;
   right: 17px;
   transform: rotate(-0.5turn);
@@ -125,7 +125,7 @@ h1 {
 */
 .sidebar {
   width: 0px;
-  position: absolute;
+  position: fixed;
   right: -254px;
   overflow: hidden;
   z-index: 0;
@@ -136,7 +136,7 @@ h1 {
   width: 254px;
   height: 100%;
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   right: 0;
   backdrop-filter: blur(50px);
 }
@@ -168,3 +168,97 @@ h1 {
 .link-page > span {
   font-weight: 700;
 }
+
+/*
+######################################################################
+               Destination page
+######################################################################
+*/
+/*
+
+
+p {
+  color: #d0d6f9;
+}
+
+#textBeforeTitle {
+  margin:-2px 0px 35px 0px;
+}
+
+#planetImg {
+  width: 170px;
+  height: 170px;
+  margin: 0px;
+}
+
+
+#containerTabs {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#containerTabs > a {
+color: #d0d6f9;
+text-transform: uppercase;
+text-decoration: none ;
+font-family: "Barlow Condensed";
+font-size: 14px;
+padding: 29px 0px 25px 0px;  
+font-weight: 400;
+line-height: 17px;
+letter-spacing: 2.3625px;
+}
+
+#main-title {
+  font-size: 3.5rem;
+  padding: 10px 0px 0px 0px;
+}
+
+#textAfterTitle {
+  margin-top: 0px;
+  line-height: 25px;
+}
+
+hr {
+  margin: 23px 0px 20px 0px;
+  width: 80%;
+  opacity: .5;
+  height: 1px;
+  z-index: -1;
+}
+
+.containerDescriptionDestinations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  padding: 0px;
+  height: 100xp;
+}
+
+.descriptionData {
+  margin: 0px;
+  padding: 12px 10px;
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2.3625px;
+  font-size: 0.88rem;
+  font-weight: 400;
+}
+
+.dataDestination {
+  margin: 0px;
+  padding-top:2px;  
+  padding-bottom: 20px;
+  color: white;
+  font-family: Bellefair;
+  font-size: 1.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+#endGapFix {
+  padding-bottom: 33px;
+}
+
+*/

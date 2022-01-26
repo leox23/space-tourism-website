@@ -21,22 +21,43 @@
 });">
   <nav class="sidebar">
     <div class="sidebarChildContainer">
-      <a href="" class="link-page"><span>00</span> HOME</a>
-      <a href="" class="link-page"><span>01</span> DESTINATION</a>
-      <a href="" class="link-page"><span>02</span> CREW</a>
-      <a href="" class="link-page"><span>03</span> TECHNOLOGY</a>
+      <a href="#" onclick="actualPage = 0; extractJSON('data.json', (err, data) => {});return false;" class="link-page"><span>00</span> HOME</a>
+      <a href="#" onclick="actualPage = 1; extractJSON('data.json', (err, data) => {});return false;" class="link-page"><span>01</span> DESTINATION</a>
+      <a href="#" onclick="actualPage = 2; extractJSON('data.json', (err, data) => {});return false;" class="link-page"><span>02</span> CREW</a>
+      <a href="#" onclick="actualPage = 3; extractJSON('data.json', (err, data) => {});return false;" class="link-page"><span>03</span> TECHNOLOGY</a>
     </div>
   </nav>
   <img src="assets/shared/logo.svg" id="logo" alt="logo of webpage">
   <img src="assets/shared/icon-hamburger.svg" class="btn" id="btn" alt="hamburger button">
   <main>
     <p id="textBeforeTitle"><span></span></p>
+
+
+
+
+    <img style="display:none; " alt="planet img" class="planetImg" id="planetImg">
+    <div id="containerTabs">
+    </div>
+
     <h1 id="main-title"></h1>
-    <p id="textAfterTitle"></p>
+    <p id="textAfterTitle"></p> 
+    
+    <div class="containerDescriptionDestinations">
+      <p class="descriptionData"></p>
+      <p class="dataDestination"></p>
+    </div>
+    <div class="containerDescriptionDestinations">
+      <p class="descriptionData"></p>
+      <p class="dataDestination" id="endGapFix"></p>
+    </div>
+
     <div class="explore">
       <p id="exploreText"></p>
-    </div>
+    </div> 
+
+
   </main>
+
   <!--  JQuery CDN link  -->
   <script src="lib/jquery-3.6.0.min.js"></script>
   <script type="application/json" src="data.json"></script>

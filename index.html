@@ -16,7 +16,7 @@
   <title>Space tourism website</title>
 </head>
 
-<body onLoad="actualPage = 0; extractJSON('data.json', (err, data) => {
+<body onLoad="actualPage = 2; extractJSON('data.json', (err, data) => {
               console.log(data);
 });">
   <nav class="sidebar">
@@ -30,15 +30,15 @@
   <img src="assets/shared/logo.svg" id="logo" alt="logo of webpage">
   <img src="assets/shared/icon-hamburger.svg" class="btn" id="btn" alt="hamburger button">
   <main>
-    <p id="textBeforeTitle"><span></span></p>
+    <p id="textBeforeTitle"> <b>02</b> Meet your crew</p>
 
 
 
-
-    <img style="display:none; " alt="planet img" class="planetImg" id="planetImg">
+        <!-- !recuerda colocar display none en la imagen  -->
+    <img style="" id="mainImg">
     <div id="containerTabs">
     </div>
-
+    <p id="subTitle"></p>
     <h1 id="main-title"></h1>
     <p id="textAfterTitle"></p> 
     
@@ -51,7 +51,7 @@
       <p class="dataDestination" id="endGapFix"></p>
     </div>
 
-    <div class="explore">
+    <div class="explore" style="display:none;">
       <p id="exploreText"></p>
     </div> 
 

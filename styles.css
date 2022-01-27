@@ -174,18 +174,16 @@ h1 {
                Destination page
 ######################################################################
 */
-/*
-
 
 p {
   color: #d0d6f9;
 }
 
-#textBeforeTitle {
+.textBeforeTitle-destination {
   margin:-2px 0px 35px 0px;
 }
 
-#planetImg {
+.mainImgPlanet {
   width: 170px;
   height: 170px;
   margin: 0px;
@@ -199,23 +197,24 @@ p {
 }
 
 #containerTabs > a {
-color: #d0d6f9;
+padding: 29px 0px 10px 0px;  
+margin-bottom: 12px;
+font-size: 14px;
+font-weight: 400;
+color:  white;
 text-transform: uppercase;
 text-decoration: none ;
 font-family: "Barlow Condensed";
-font-size: 14px;
-padding: 29px 0px 25px 0px;  
-font-weight: 400;
 line-height: 17px;
 letter-spacing: 2.3625px;
 }
 
-#main-title {
+.main-title-destination {
   font-size: 3.5rem;
   padding: 10px 0px 0px 0px;
 }
 
-#textAfterTitle {
+.textAfterTitle-destination {
   margin-top: 0px;
   line-height: 25px;
 }
@@ -258,7 +257,23 @@ hr {
 }
 
 #endGapFix {
-  padding-bottom: 33px;
+  padding-bottom: 28px;
+}
+/*
+######################################################################
+        03 Crew
+######################################################################
+*/
+
+.mainImgCrew {
+  width: 177.12px;
+  height: 222px;
+  /* border-bottom: 2px solid #222532; */
 }
 
-*/
+.crewBullets {
+  width: 10px;
+  height: 10px;
+  background:white;
+  border-radius: 100px;
+}

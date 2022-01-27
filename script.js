@@ -66,6 +66,9 @@ function extractJSON(tasksList , callbackFunc){
           else if (actualPage == 1.3){
             destinationEspecific(data.destinations[3])
           }
+          else if (actualPage == 2){
+            writeCrewPage(data.crew[0])
+          }
           
         } else if (request.readyState === 4) {
             callbackFunc('no se han podido obtener los datos', undefined);
@@ -85,13 +88,14 @@ function writeHomePage(home, subHeading){
   console.log(home)
   console.log(subHeading)
 //hidding
-document.getElementById("planetImg").style.display = "none"
+document.getElementById("mainImg").style.display = "none"
 document.getElementById("containerTabs").style.display = "none"
 document.getElementsByClassName("containerDescriptionDestinations")[0].style.display = "none"
 document.getElementsByClassName("containerDescriptionDestinations")[1].style.display = "none"
 
 //showing
 boxButton = document.querySelector(".explore").style.display = "flex"
+
 
 subHead = document.getElementById("textBeforeTitle")
 subHead.textContent = subHeading
@@ -119,10 +123,14 @@ function writeDestinationPage(destinations, subHeading){
 document.querySelector(".explore").style.display = "none"
 
 //showing
-document.getElementById("planetImg").style.display = "inherit "
+document.getElementById("mainImg").style.display = "inherit "
 document.getElementById("containerTabs").style.display = "flex"
 document.getElementsByClassName("containerDescriptionDestinations")[0].style.display = "flex"
 document.getElementsByClassName("containerDescriptionDestinations")[1].style.display = "flex"
+
+//class toggles
+document.querySelector("#main-title").classList.add("main-title-destination")
+document.querySelector("#textAfterTitle").classList.add("main-title-destination")
 
 
 
@@ -133,15 +141,18 @@ document.body.style.background = 'url("assets/destination/background-destination
 //todo no funciona opacarlo a lo mejor tendre que ponerlo en una etiquita img
 //document.body.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
 
+
+//!aqui tengo que colocar los planetas con las variables que lei del JSON
+//!No con texto directamente como lo estoy haciendo
 document.getElementById("containerTabs").innerHTML = `
-<a href="#" onclick="actualPage = 1.0; extractJSON('data.json', (err, data) => {});return false;" class="destinationTabs">Moon</a>
-<a href="#" onclick="actualPage = 1.1; extractJSON('data.json', (err, data) => {});return false;" class="destinationTabs">Mars</a>
-<a href="#" onclick="actualPage = 1.2; extractJSON('data.json', (err, data) => {});return false;" class="destinationTabs">Europa</a>
-<a href="#" onclick="actualPage = 1.3; extractJSON('data.json', (err, data) => {});return false;" class="destinationTabs">Titan</a>
+<a href="#" onclick="actualPage = 1.0; extractJSON('data.json', (err, data) => {});return false;" class="destinationTabs" id="destinationTab0">Moon</a>
+<a href="#" onclick="actualPage = 1.1; extractJSON('data.json', (err, data) => {});return false;" class="destinationTabs" id="destinationTab1">Mars</a>
+<a href="#" onclick="actualPage = 1.2; extractJSON('data.json', (err, data) => {});return false;" class="destinationTabs" id="destinationTab2">Europa</a>
+<a href="#" onclick="actualPage = 1.3; extractJSON('data.json', (err, data) => {});return false;" class="destinationTabs" id="destinationTab3">Titan</a>
 `
 
 /*
-//creando linea horizontal
+!falta solucionar el caso de la linea horizontal en la pagina destinations
 let pbase = document.querySelector("#textAfterTitle");
 let lineHr = document.createElement("hr");
 pbase.after(hr);
@@ -153,41 +164,107 @@ descriptionData.textContent = "Avg. distance"
 descriptionData = document.querySelectorAll(".descriptionData")[1]
 descriptionData.textContent = "Est. Travel Time"
 
-
 }
 
-function destinationEspecific(destinations) {
+function destinationEspecific(destination) {
+//agregando clase de imagen 
+document.getElementById("mainImg").removeAttribute("class")
+document.getElementById("mainImg").classList.add("mainImgPlanet")
+
 //cambiando imagen del planeta
-document.getElementById("planetImg").src= destinations.images.webp
-//document.getElementsByTagName("H1")[0].setAttribute("class", "democlass");
+document.getElementById("mainImg").src= destination.images.webp
+
+//modificando atributo alt de la imagen del planeta
+altTemp = "Photo of " + destination.name 
+document.getElementById("mainImg").setAttribute("alt", altTemp);
 
 //colocando nombre del planeta  
 title = document.getElementById("main-title")
-title.textContent = destinations.name 
+title.textContent = destination.name 
 
 //colocando contenido
 mainText = document.getElementById("textAfterTitle")
-mainText.textContent = destinations.description
+mainText.textContent = destination.description
 
 //distancia
 dataPlanet = document.querySelectorAll(".dataDestination")[0]
-dataPlanet.textContent = destinations.distance
+dataPlanet.textContent = destination.distance
 
 //tiempo de recorrido
 dataPlanet = document.querySelectorAll(".dataDestination")[1]
-dataPlanet.textContent = destinations.travel
+dataPlanet.textContent = destination.travel
+
+//para desaparecer la barra lateral
+document.querySelector("body > nav").classList.remove("sidebar-open");
+
+//extrayendo cual es la pagina actual
+actualPageLastChar = String(actualPage)
+actualPageLastChar = actualPageLastChar.charAt(2)
+if (actualPageLastChar == ""){actualPageLastChar = 0}
+
+//borrando los bordes para colocar el correspondiente
+document.querySelectorAll(".destinationTabs").forEach(element => {
+  element.style.borderBottom = "none"
+});
+
+//colocando borde a pestaña correspondiente
+document.querySelectorAll(".destinationTabs")[actualPageLastChar].style.borderBottom = "2px solid white"
 
 
-
-$(".btn").toggleClass("close-btn");
-$(".sidebar").toggleClass("sidebar-open");
-if ($("#btn").hasClass("close-btn")) {
-  $(this).attr("src", "assets/shared/icon-close.svg");
-} else {
-  $(this).attr("src", "assets/shared/icon-hamburger.svg");
 }
-}
 
+function writeCrewPage(crew) {
+  //agregando clase de imagen 
+  document.getElementById("mainImg").removeAttribute("class")
+  document.getElementById("mainImg").classList.add("mainImgCrew")
+  
+  //cambiando imagen del planeta
+  document.getElementById("mainImg").src = crew.images.png
+  
+  //modificando atributo alt de la imagen del planeta
+  altTemp = "Photo of " + crew.name 
+  document.getElementById("mainImg").setAttribute("alt", altTemp);
+  
+
+//!tengo que crear una funcion donde se creen estos slider y que pueda modificar las clases aparte en el css y le relaciono la clase con el id
+  document.getElementById("containerTabs").innerHTML = `
+<a href="#" onclick="actualPage = 2.0; extractJSON('data.json', (err, data) => {});return false;" class="crewBullets" id="crewBullet0"></a>
+<a href="#" onclick="actualPage = 2.1; extractJSON('data.json', (err, data) => {});return false;" class="crewBullets" id="crewBullet1"></a>
+<a href="#" onclick="actualPage = 2.2; extractJSON('data.json', (err, data) => {});return false;" class="crewBullets" id="crewBullet2"></a>
+<a href="#" onclick="actualPage = 2.3; extractJSON('data.json', (err, data) => {});return false;" class="crewBullets" id="crewBullet3"></a>
+`
+
+  //colocando titulo del crew 
+  role = document.getElementById("subTitle")
+  role.textContent = crew.role 
+
+  //colocando nombre del crew 
+  nameCrew = document.getElementById("main-title")
+  nameCrew.textContent = crew.name 
+  
+  //colocando contenido
+  mainText = document.getElementById("textAfterTitle")
+  mainText.textContent = crew.bio
+  
+  //para desaparecer la barra lateral
+  document.querySelector("body > nav").classList.remove("sidebar-open");
+   /*
+  
+  !aqui es donde voy a hacer las modificaciones de  los bullets para el cambio de imagenes
+  //extrayendo cual es la pagina actual
+  actualPageLastChar = String(actualPage)
+  actualPageLastChar = actualPageLastChar.charAt(2)
+  if (actualPageLastChar == ""){actualPageLastChar = 0}
+  
+  //borrando los bordes para colocar el correspondiente
+  document.querySelectorAll(".destinationTabs").forEach(element => {
+    element.style.borderBottom = "none"
+  });
+  
+  //colocando borde a pestaña correspondiente
+  document.querySelectorAll(".destinationTabs")[actualPageLastChar].style.borderBottom = "2px solid white"
+*/ 
+}
 
 
 

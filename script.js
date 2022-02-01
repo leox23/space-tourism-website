@@ -131,6 +131,8 @@ function clearPage() {
   //de la primera pagin
   document.querySelector(".explore").style.display = "none";
 
+  document.getElementById("imgTechDiv").style.display = "none"
+
   //para desaparecer la barra lateral
   document.querySelector("#sidebar").classList.remove("sidebar-open");
 
@@ -363,9 +365,13 @@ pbase.after(hr);
 */ case "technology":
 //alert(`url("${pageContent.images.portrait}")`)
 //eliminando img tag para trabajar con bacgroundimg
-      document.querySelector("#mainImg").style.display = "none  ";
-      document.getElementById("imgTechDiv").style.background = `url("${pageContent.images.portrait}")`
+      document.querySelector("#mainImg").style.display = "none";
+      document.getElementById("imgTechDiv").style.display = "block"
       document.getElementById("imgTechDiv").classList.add("imgTech");
+      document.getElementById("imgTechDiv").style.background = `url("${pageContent.images.portrait}")`
+
+
+
       document.getElementById("containerTabs").classList.add("containerNumbesTech");
 
       //borrando los bordes para colocar el correspondiente

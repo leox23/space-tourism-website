@@ -295,6 +295,9 @@ function writeCrewPage(crew) {
   document.body.style.background = 'black url("assets/crew/background-crew-mobile.jpg") no-repeat';
   //document.body.style.filter = "brightness(100%)"
 
+  //haciendo visible imagen el
+  document.getElementById("mainImg").style.display = "block"
+
   //agregando clase de imagen
   document.getElementById("mainImg").classList.add("mainImgCrew");
 
@@ -349,19 +352,10 @@ document.getElementsByClassName("crewBullets")[actualPageLastChar].style.backgro
 
   document.getElementById("textAfterTitle").classList.add("textAfterNameCrew");
 
-  /*  
-  !aqui es donde voy a hacer las modificaciones de  los bullets para el cambio de imagenes
-  //extrayendo cual es la pagina actual
-  actualPageLastChar = String(actualPage)
-  actualPageLastChar = actualPageLastChar.charAt(2)
-  if (actualPageLastChar == ""){actualPageLastChar = 0}
-  
-  //borrando los bordes para colocar el correspondiente
-  document.querySelectorAll(".destinationTabs").forEach(element => {
-    element.style.borderBottom = "none"
-  });
-  
-  //colocando borde a pestaña correspondiente
-  document.querySelectorAll(".destinationTabs")[actualPageLastChar].style.borderBottom = "2px solid white"
-*/
 }
+
+/*
+######################################################################
+    04 Technology
+######################################################################
+*/

@@ -44,40 +44,68 @@ function extractJSON(tasksList, callbackFunc) {
           console.log(technology)
           console.log(subHeadings)
 
+
+          console.log("desde dentro de write home");
+  console.log(home);
+  console.log(subHeading);
           */
-
-      if (actualPage == 0) {
-        //esto es para la pagina home
-        writeHomePage(data.home[0], data.subHeadings[0].home);
+      actualPageLastChar = actualPage.charAt(2);
+      pageNumber = actualPage.charAt(0);
+      pageSubHeadingNumber = `0${actualPage.charAt(0)}`;
+      if (actualPageLastChar == "") {
+        actualPageLastChar = 0;
       }
-      if (actualPage == 1) {
+      //alert(actualPage + "\n" + typeof actualPage)
+      switch (actualPage) {
+        case "0":
+          page = "home";
+          break;
+        case "1":
+          page = "destination";
+          break;
+        case "2":
+          page = "crew";
+          break;
+        case "3":
+          page = "technology";
+          break;
+      }
+      if (pageNumber == 0) {
         //esto es para la pagina home
-        //writeHome(data.home[0],data.subHeadings[0].home)
-
-        //este es de la pagina 2
-        writeDestinationPage(
-          data.destinations[0],
-          data.subHeadings[0].destination
+        //writeHomePage(data.home[0], data.subHeadings[0].home);
+        writePage(
+          page,
+          actualPageLastChar,
+          data.home[actualPageLastChar],
+          data.subHeadings[0].home
         );
-        destinationEspecific(data.destinations[0]);
-      } else if (actualPage == 1.0) {
-        destinationEspecific(data.destinations[0]);
-      } else if (actualPage == 1.1) {
-        destinationEspecific(data.destinations[1]);
-      } else if (actualPage == 1.2) {
-        destinationEspecific(data.destinations[2]);
-      } else if (actualPage == 1.3) {
-        destinationEspecific(data.destinations[3]);
-      } else if (actualPage == 2) {
-        writeCrewPage(data.crew[0]);
-      } else if (actualPage == 2.0) {
-        writeCrewPage(data.crew[0]);
-      } else if (actualPage == 2.1) {
-        writeCrewPage(data.crew[1]);
-      } else if (actualPage == 2.2) {
-        writeCrewPage(data.crew[2]);
-      } else if (actualPage == 2.3) {
-        writeCrewPage(data.crew[3]);
+      } else if (pageNumber == 1) {
+        writePage(
+          page,
+          actualPageLastChar,
+          data.destinations[actualPageLastChar],
+          data.subHeadings[0].destination,
+          data.destinations
+        );
+      } else if (pageNumber == 2) {
+        writePage(
+          page,
+          actualPageLastChar,
+          data.crew[actualPageLastChar],
+          data.subHeadings[0].crew,
+          data.crew
+        );
+        
+      }
+      else if (pageNumber == 3) {
+        writePage(
+          page,
+          actualPageLastChar,
+          data.technology[actualPageLastChar],
+          data.subHeadings[0].technology,
+          data.technology
+        );
+        
       }
     } else if (request.readyState === 4) {
       callbackFunc("no se han podido obtener los datos", undefined);
@@ -87,8 +115,7 @@ function extractJSON(tasksList, callbackFunc) {
   request.send();
 }
 
-
-function sleep (time) {
+function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
@@ -100,7 +127,7 @@ function sleep (time) {
 function clearPage() {
   //TODO tengo que especificar que se debe eliminar para cada pagina, y no estar eliminando a la brava
   //colocar icono de hamburguesa en sidebar nuevamente para
-  
+
   //document.querySelector("#btn").classList.toggle("close-btn");
 
   //de la primera pagin
@@ -142,220 +169,205 @@ function clearPage() {
 
 /*
 ######################################################################
-         00 Home
+    Write Page
 ######################################################################
 */
-function writeHomePage(home, subHeading) {
-  console.log("desde dentro de write home");
-  console.log(home);
-  console.log(subHeading);
-
-
-  clearPage()
-
-
-  //colocando fondo de body
-  document.body.style.background =
-    'black url("assets/home/background-home-mobile.jpg") no-repeat';
-
-  //hidding
-  //pendiente para meter en clear page
-  document.getElementById("mainImg").style.display = "none";
-
-  //showing
-  boxButton = document.querySelector(".explore").style.display = "flex";
+function writePage(
+  page,
+  actualPageLastChar,
+  pageContent,
+  subHeading,
+  allContentPage
+) {
+  clearPage();
+  //background-crew-mobile.jpg - background-home-tablet.jpg - background-home-desktop.jpg
+  bodyBackground = `black url("assets/${page}/background-${page}-mobile.jpg") no-repeat`;
+  document.body.style.background = bodyBackground;
 
   subHead = document.getElementById("textBeforeTitle");
   subHead.textContent = subHeading;
 
   title = document.getElementById("main-title");
-  title.textContent = home.title;
-
+  
+  title.textContent = pageContent.name;
   mainText = document.getElementById("textAfterTitle");
-  mainText.textContent = home.mainText;
 
-  button = document.getElementById("exploreText");
-  button.textContent = home.bugButtonText;
-}
-
+  switch (page) {
 /*
 ######################################################################
-          01  DESTINATIONS
+    01 Home y basicos de los otros
 ######################################################################
-*/
-function writeDestinationPage(destinations, subHeading) {
+*/  case "home":
+      //el unico custom var del titulo
+      title.textContent = pageContent.title;
+      mainText.textContent = pageContent.mainText;
+      button = document.getElementById("exploreText");
+      button.textContent = pageContent.bugButtonText;
+      //hidding
+      document.getElementById("mainImg").style.display = "none";
+      //showing
+      boxButton = document.querySelector(".explore").style.display = "flex";
+      break;
+    case "destination":
+      title.classList.add("main-title-destination");
+      mainText.textContent = pageContent.description;
+      mainText.classList.add("textAfterTitle-destination");
+      break;
+    case "crew":
+      title.classList.add("crewName");
+      mainText.textContent = pageContent.bio;
+      break;
+    case "technology":
+      title.classList.add("crewName");
+      mainText.textContent = pageContent.bio;
 
 
-  clearPage()
 
+      break;
+  }
+  if (page != "home") {
+    writeTheRestOfThePage(
+      page,
+      actualPageLastChar,
+      pageContent,
+      subHeading,
+      allContentPage
+    );
+  }
+}
 
+function writeTheRestOfThePage(
+  page,
+  actualPageLastChar,
+  pageContent,
+  subHeading,
+  allContentPage
+) {
   //showing
   document.getElementById("mainImg").style.display = "inherit ";
-  //agregando la clase de las pestañas
-  document.getElementById("containerTabs").classList.add("containerTabs");
-  document.getElementById("containerTabs").style.display = "flex";
-  document.getElementsByClassName(
-    "containerDescriptionDestinations"
-  )[0].style.display = "flex";
-  document.getElementsByClassName(
-    "containerDescriptionDestinations"
-  )[1].style.display = "flex";
-
-  //class toggles
-  document.querySelector("#main-title").classList.add("main-title-destination");
-  document
-    .querySelector("#textAfterTitle")
-    .classList.add("main-title-destination");
-
+  containerTabs = document.getElementById("containerTabs");
+  containerTabs.style.display = "flex";
   textBeforeTitle = document.getElementById("textBeforeTitle");
-  textBeforeTitle.innerHTML = "<b>01 </b> " + subHeading;
-  //fondo
-  document.body.style.background =
-    'black url("assets/destination/background-destination-mobile.jpg") no-repeat';
-  //! no funciona opacarlo en la misma etiqueta al parecer, tengo que solucionarlo porque o necesito para las otras paginas
-  //document.body.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+  textBeforeTitle.innerHTML = `<b>${pageSubHeadingNumber} </b>${subHeading}`;
 
-  document.getElementById("containerTabs").classList.add("destinationTabs");
-  //!No con texto directamente como lo estoy haciendo
-  //!colocar ids con los que puedan interactuar todas las paginas, y no tener que crearlas una a una
+  //cambiando imagen
+  
+  
+  document.getElementById("mainImg").src = pageContent.images.webp;
+
+  //modificando atributo alt de la imagen
+  altTemp = "Photo of " + pageContent.name;
+  document.getElementById("mainImg").setAttribute("alt", altTemp);
+
+  //class de los tabs
+  classTab = ["", "destinationTab", "crewBullets", "??tech"];
+  //creando pestañas
   document.getElementById("containerTabs").innerHTML = `
-<a href="#" onclick="actualPage = 1.0; extractJSON('data.json', (err, data) => {});return false;" class="destinationTab" id="destinationTab0">Moon</a>
-<a href="#" onclick="actualPage = 1.1; extractJSON('data.json', (err, data) => {});return false;" class="destinationTab" id="destinationTab1">Mars</a>
-<a href="#" onclick="actualPage = 1.2; extractJSON('data.json', (err, data) => {});return false;" class="destinationTab" id="destinationTab2">Europa</a>
-<a href="#" onclick="actualPage = 1.3; extractJSON('data.json', (err, data) => {});return false;" class="destinationTab" id="destinationTab3">Titan</a>
+<a href="#" onclick="actualPage = '${pageNumber}.0'; extractJSON('data.json', (err, data) => {});return false;" class="${
+    classTab[pageNumber]
+  }" id="destinationTab0">
+${page == "destination" ? allContentPage[0].name : page == "crew" ? "" : "1"}
+</a>
+<a href="#" onclick="actualPage = '${pageNumber}.1'; extractJSON('data.json', (err, data) => {});return false;" class="${
+    classTab[pageNumber]
+  }" id="destinationTab1">
+${page == "destination" ? allContentPage[1].name : page == "crew" ? "" : "2"}
+</a>
+<a href="#" onclick="actualPage = '${pageNumber}.2'; extractJSON('data.json', (err, data) => {});return false;" class="${
+    classTab[pageNumber]
+  }" id="destinationTab2">
+${page == "destination" ? allContentPage[2].name : page == "crew" ? "" : "3"}
+</a>
+<a href="#" onclick="actualPage = '${pageNumber}.3'; extractJSON('data.json', (err, data) => {});return false;" class="${
+    classTab[pageNumber]
+  }" id="destinationTab3">
+${page == "destination" ? allContentPage[3].name : page == "crew" ? "" : ""}
+</a>
 `;
 
-  /*
+  switch (page) {
+/*
+######################################################################
+  02 Destination
+######################################################################
+*/  case "destination":
+      //agregando clase de imagen
+      document.getElementById("mainImg").classList.add("mainImgPlanet");
+      document.getElementsByClassName(
+        "containerDescriptionDestinations"
+      )[0].style.display = "flex";
+      document.getElementsByClassName(
+        "containerDescriptionDestinations"
+      )[1].style.display = "flex";
+
+      descriptionData = document.querySelectorAll(".descriptionData")[0];
+      descriptionData.textContent = "Avg. distance";
+
+      descriptionData = document.querySelectorAll(".descriptionData")[1];
+      descriptionData.textContent = "Est. Travel Time";
+
+      //distancia
+      dataPlanet = document.querySelectorAll(".dataDestination")[0];
+      dataPlanet.textContent = pageContent.distance;
+
+      //tiempo de recorrido
+      dataPlanet = document.querySelectorAll(".dataDestination")[1];
+      dataPlanet.textContent = pageContent.travel;
+      document.getElementById("containerTabs").classList.add("containerTabs");
+
+      //borrando los bordes para colocar el correspondiente
+      document.querySelectorAll(".destinationTab").forEach((element) => {
+        element.style.borderBottom = "none";
+      });
+      //colocando borde a pestaña correspondiente
+      actualtab =
+        document.getElementsByClassName("destinationTab")[actualPageLastChar];
+      actualtab.style.borderBottom = "2px solid white";
+      /*
 !falta solucionar el caso de la linea horizontal en la pagina destinations
 let pbase = document.querySelector("#textAfterTitle");
 let lineHr = document.createElement("hr");
 pbase.after(hr);
 
 */
-  descriptionData = document.querySelectorAll(".descriptionData")[0];
-  descriptionData.textContent = "Avg. distance";
-
-  descriptionData = document.querySelectorAll(".descriptionData")[1];
-  descriptionData.textContent = "Est. Travel Time";
-}
-
-function destinationEspecific(destination) {
-  //agregando clase de imagen
-  document.getElementById("mainImg").classList.add("mainImgPlanet");
-
-  //cambiando imagen del planeta
-  document.getElementById("mainImg").src = destination.images.webp;
-
-  //modificando atributo alt de la imagen del planeta
-  altTemp = "Photo of " + destination.name;
-  document.getElementById("mainImg").setAttribute("alt", altTemp);
-
-  //colocando nombre del planeta
-  title = document.getElementById("main-title");
-  title.textContent = destination.name;
-
-  //colocando contenido
-  mainText = document.getElementById("textAfterTitle");
-  mainText.textContent = destination.description;
-
-  //distancia
-  dataPlanet = document.querySelectorAll(".dataDestination")[0];
-  dataPlanet.textContent = destination.distance;
-
-  //tiempo de recorrido
-  dataPlanet = document.querySelectorAll(".dataDestination")[1];
-  dataPlanet.textContent = destination.travel;
-
-  //extrayendo cual es la pagina actual
-  actualPageLastChar = String(actualPage);
-  actualPageLastChar = actualPageLastChar.charAt(2);
-  if (actualPageLastChar == "") {
-    actualPageLastChar = 0;
-  }
-
-  //borrando los bordes para colocar el correspondiente
-  document.querySelectorAll(".destinationTab").forEach((element) => {
-    element.style.borderBottom = "none";
-  });
-  //colocando borde a pestaña correspondiente
-  document.querySelectorAll(".destinationTab")[actualPageLastChar].style.borderBottom = "2px solid white";
-}
-
+      break;
 /*
 ######################################################################
-        03 Crew
+    03 Crew
 ######################################################################
-*/
-function writeCrewPage(crew) {
+*/  case "crew":
+      //agregando clase de imagen
+      document.getElementById("mainImg").classList.add("mainImgCrew");
 
-  clearPage()
+      //modificando atributo alt de la imagen del planeta
+      altTemp = "Photo of " + pageContent.name;
+      document.getElementById("mainImg").setAttribute("alt", altTemp);
+      //mostrando el contenedor de las pestañas
+      document
+        .getElementById("containerTabs")
+        .classList.add("bulletsContainer");
+      //aplicando estillo a bullet activa
+      document.getElementsByClassName("crewBullets")[
+        actualPageLastChar
+      ].style.background = "white";
+      //colocando titulo del crew
+      role = document.getElementById("subTitle");
+      role.textContent = pageContent.role;
 
-  sleep(10)
-  //cambiando fondo que
-  document.body.style.background = 'black url("assets/crew/background-crew-mobile.jpg") no-repeat';
-  //document.body.style.filter = "brightness(100%)"
-
-  //haciendo visible imagen el
-  document.getElementById("mainImg").style.display = "block"
-
-  //agregando clase de imagen
-  document.getElementById("mainImg").classList.add("mainImgCrew");
-
-  //cambiando imagen del planeta
-  document.getElementById("mainImg").src = crew.images.png;
-
-  //modificando atributo alt de la imagen del planeta
-  altTemp = "Photo of " + crew.name;
-  document.getElementById("mainImg").setAttribute("alt", altTemp);
-
-  //mostrando el contenedor de las pestañas
-  document.getElementById("containerTabs").classList.add("bulletsContainer");
-  //haciendo visible en el dom el contenedor
-  document.getElementById("containerTabs").style.display = "flex"
-  //!tengo que crear una funcion donde se creen estos slider y que pueda modificar las clases aparte en el css y le relaciono la clase con el id
-  document.getElementById("containerTabs").innerHTML = `
-<a href="#" onclick="actualPage = 2.0; extractJSON('data.json', (err, data) => {});return false;" class="crewBullets" id="crewBullet0"></a>
-<a href="#" onclick="actualPage = 2.1; extractJSON('data.json', (err, data) => {});return false;" class="crewBullets" id="crewBullet1"></a>
-<a href="#" onclick="actualPage = 2.2; extractJSON('data.json', (err, data) => {});return false;" class="crewBullets" id="crewBullet2"></a>
-<a href="#" onclick="actualPage = 2.3; extractJSON('data.json', (err, data) => {});return false;" class="crewBullets" id="crewBullet3"></a>
-`;
-
-
-
-actualPageLastChar = String(actualPage);
-actualPageLastChar = actualPageLastChar.charAt(2);
-if (actualPageLastChar == "") {
-  actualPageLastChar = 0;
-}
-//aplicando estillo a bullet activa
-document.getElementsByClassName("crewBullets")[actualPageLastChar].style.background = "white"
-
-
-
-  //colocando titulo del crew
-  role = document.getElementById("subTitle");
-  role.textContent = crew.role;
-
-  //colocando clase a subtitulo
-  role.classList.add("subtitleCrew");
-
-  //colocando nombre del crew
-  nameCrew = document.getElementById("main-title");
-  nameCrew.textContent = crew.name;
-
-  //agregagndo la clase para poder aplicar estilos
-  nameCrew.classList.add("crewName");
-
-  //colocando contenido
-  mainText = document.getElementById("textAfterTitle");
-  mainText.textContent = crew.bio;
-
-  document.getElementById("textAfterTitle").classList.add("textAfterNameCrew");
-
-}
-
+      //colocando clase a subtitulo
+      role.classList.add("subtitleCrew");
+      document
+        .getElementById("textAfterTitle")
+        .classList.add("textAfterNameCrew");
+      break;
 /*
 ######################################################################
     04 Technology
 ######################################################################
-*/
+*/ case "technology":
+      document.getElementById("mainImg").src = pageContent.images.portrait
+      document.getElementById("mainImg").classList.add("imgTech");
+
+      break;
+  }
+}

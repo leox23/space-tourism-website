@@ -6,8 +6,6 @@
 
 El sitio web solo tiene un index.html, todo trabajado desde JSON y JavaScript... 
 
+[Live web aqui](https://leox23.github.io/space-tourism-website/)
+
 Aun trabajando vistas móviles (x375 y?)
-
-🐞 Por arreglar:
-
-- Pestañas de sitio 01 Destinations is broken, hay que corregir estilos, por modificaciones en js se vio afectada. 

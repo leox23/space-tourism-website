@@ -2,19 +2,17 @@
 
 html body {
   border: 0px;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
 }
+
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
 
-body {
-  background: url("assets/home/background-home-mobile.jpg") no-repeat;
-}
 
 /*
 ######################################################################
@@ -38,6 +36,7 @@ body {
   right: 17px;
   transform: rotate(-0.5turn);
   transition: all 0.5s ease-out;
+  z-index: 5;
 }
 
 /* ----------- close btn style------------- */
@@ -46,9 +45,9 @@ body {
   height: 21px;
   top: 22px;
   right: 17;
-  z-index: 1;
   transform: rotate(0.5turn);
   transition: all 0.5s ease-out;
+  z-index: 5;
 }
 
 main {
@@ -192,12 +191,12 @@ p {
 
 
 .containerTabs {
-  width: 300px;
+  width: 70%;
   display: flex;
   justify-content: space-between;
 }
 
-.destinationTabs {
+.destinationTab {
 padding: 29px 0px 10px 0px;  
 margin-bottom: 12px;
 font-size: 14px;
@@ -267,17 +266,18 @@ hr {
 */
 
 .mainImgCrew {
+  margin-top: 10px;
   width: 177.12px;
   height: 222px;
-  /* border-bottom: 2px solid #222532; */
 }
 
 .bulletsContainer {
-  width: 100%;
+  border-top: 1px solid #666B88;
+  width: 87.20%;
   height: 10px;
   display: flex;
   justify-content: center;
-  padding: 40px 0px;
+  padding: 39px 0px;
 }
 
 .crewBullets {
@@ -285,19 +285,28 @@ hr {
   height: 10px;
   margin: 0px 8px;
   padding: 0px;
-  background:white;
+  background: #666B88;
   border-radius: 100px;
+}
+
+.activeBullet {
+  background: white;
+}
+
+.subtitleCrew {
+  margin: 0px;
+  font-size: 1rem;
+  opacity: 0.5;
+  text-transform: uppercase;  
+  font-family: Bellefair;
 }
 
 .crewName {
   font-size: 1.5rem;
 }
 
-.subtitleCrew {
-  font-size: 1rem;
-  opacity: 0.5;
-  text-transform: uppercase;  
-  font-family: Bellefair;
+.textAfterNameCrew {
+  padding-bottom: 30px !important;
 }
 
 

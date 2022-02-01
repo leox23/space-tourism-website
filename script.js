@@ -70,6 +70,14 @@ function extractJSON(tasksList, callbackFunc) {
         destinationEspecific(data.destinations[3]);
       } else if (actualPage == 2) {
         writeCrewPage(data.crew[0]);
+      } else if (actualPage == 2.0) {
+        writeCrewPage(data.crew[0]);
+      } else if (actualPage == 2.1) {
+        writeCrewPage(data.crew[1]);
+      } else if (actualPage == 2.2) {
+        writeCrewPage(data.crew[2]);
+      } else if (actualPage == 2.3) {
+        writeCrewPage(data.crew[3]);
       }
     } else if (request.readyState === 4) {
       callbackFunc("no se han podido obtener los datos", undefined);
@@ -79,6 +87,11 @@ function extractJSON(tasksList, callbackFunc) {
   request.send();
 }
 
+
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 /*
 ######################################################################
     Hidding and Clear page  Functions
@@ -86,6 +99,10 @@ function extractJSON(tasksList, callbackFunc) {
 */
 function clearPage() {
   //TODO tengo que especificar que se debe eliminar para cada pagina, y no estar eliminando a la brava
+  //colocar icono de hamburguesa en sidebar nuevamente para
+  
+  //document.querySelector("#btn").classList.toggle("close-btn");
+
   //de la primera pagin
   document.querySelector(".explore").style.display = "none";
 
@@ -115,6 +132,7 @@ function clearPage() {
   )[1].style.display = "none";
 
   // de la pagina 03 crew
+  document.getElementById("textAfterTitle").removeAttribute("class");
   document.getElementById("subTitle").removeAttribute("class");
   document.getElementById("subTitle").textContent = "";
 
@@ -138,7 +156,7 @@ function writeHomePage(home, subHeading) {
 
   //colocando fondo de body
   document.body.style.background =
-    'url("assets/home/background-home-mobile.jpg") no-repeat';
+    'black url("assets/home/background-home-mobile.jpg") no-repeat';
 
   //hidding
   //pendiente para meter en clear page
@@ -173,6 +191,8 @@ function writeDestinationPage(destinations, subHeading) {
 
   //showing
   document.getElementById("mainImg").style.display = "inherit ";
+  //agregando la clase de las pestañas
+  document.getElementById("containerTabs").classList.add("containerTabs");
   document.getElementById("containerTabs").style.display = "flex";
   document.getElementsByClassName(
     "containerDescriptionDestinations"
@@ -191,7 +211,7 @@ function writeDestinationPage(destinations, subHeading) {
   textBeforeTitle.innerHTML = "<b>01 </b> " + subHeading;
   //fondo
   document.body.style.background =
-    'url("assets/destination/background-destination-mobile.jpg") no-repeat';
+    'black url("assets/destination/background-destination-mobile.jpg") no-repeat';
   //! no funciona opacarlo en la misma etiqueta al parecer, tengo que solucionarlo porque o necesito para las otras paginas
   //document.body.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
 
@@ -199,10 +219,10 @@ function writeDestinationPage(destinations, subHeading) {
   //!No con texto directamente como lo estoy haciendo
   //!colocar ids con los que puedan interactuar todas las paginas, y no tener que crearlas una a una
   document.getElementById("containerTabs").innerHTML = `
-<a href="#" onclick="actualPage = 1.0; extractJSON('data.json', (err, data) => {});return false;" class="destinationTabs" id="destinationTab0">Moon</a>
-<a href="#" onclick="actualPage = 1.1; extractJSON('data.json', (err, data) => {});return false;" class="destinationTabs" id="destinationTab1">Mars</a>
-<a href="#" onclick="actualPage = 1.2; extractJSON('data.json', (err, data) => {});return false;" class="destinationTabs" id="destinationTab2">Europa</a>
-<a href="#" onclick="actualPage = 1.3; extractJSON('data.json', (err, data) => {});return false;" class="destinationTabs" id="destinationTab3">Titan</a>
+<a href="#" onclick="actualPage = 1.0; extractJSON('data.json', (err, data) => {});return false;" class="destinationTab" id="destinationTab0">Moon</a>
+<a href="#" onclick="actualPage = 1.1; extractJSON('data.json', (err, data) => {});return false;" class="destinationTab" id="destinationTab1">Mars</a>
+<a href="#" onclick="actualPage = 1.2; extractJSON('data.json', (err, data) => {});return false;" class="destinationTab" id="destinationTab2">Europa</a>
+<a href="#" onclick="actualPage = 1.3; extractJSON('data.json', (err, data) => {});return false;" class="destinationTab" id="destinationTab3">Titan</a>
 `;
 
   /*
@@ -254,14 +274,11 @@ function destinationEspecific(destination) {
   }
 
   //borrando los bordes para colocar el correspondiente
-  document.querySelectorAll(".destinationTabs").forEach((element) => {
+  document.querySelectorAll(".destinationTab").forEach((element) => {
     element.style.borderBottom = "none";
   });
-
   //colocando borde a pestaña correspondiente
-  document.querySelectorAll(".destinationTabs")[
-    actualPageLastChar
-  ].style.borderBottom = "2px solid white";
+  document.querySelectorAll(".destinationTab")[actualPageLastChar].style.borderBottom = "2px solid white";
 }
 
 /*
@@ -271,13 +288,12 @@ function destinationEspecific(destination) {
 */
 function writeCrewPage(crew) {
 
-
   clearPage()
-  
 
+  sleep(10)
   //cambiando fondo que
-  document.body.style.background =
-    'url("assets/crew/background-crew-mobile.jpg") no-repeat';
+  document.body.style.background = 'black url("assets/crew/background-crew-mobile.jpg") no-repeat';
+  //document.body.style.filter = "brightness(100%)"
 
   //agregando clase de imagen
   document.getElementById("mainImg").classList.add("mainImgCrew");
@@ -289,7 +305,10 @@ function writeCrewPage(crew) {
   altTemp = "Photo of " + crew.name;
   document.getElementById("mainImg").setAttribute("alt", altTemp);
 
+  //mostrando el contenedor de las pestañas
   document.getElementById("containerTabs").classList.add("bulletsContainer");
+  //haciendo visible en el dom el contenedor
+  document.getElementById("containerTabs").style.display = "flex"
   //!tengo que crear una funcion donde se creen estos slider y que pueda modificar las clases aparte en el css y le relaciono la clase con el id
   document.getElementById("containerTabs").innerHTML = `
 <a href="#" onclick="actualPage = 2.0; extractJSON('data.json', (err, data) => {});return false;" class="crewBullets" id="crewBullet0"></a>
@@ -297,6 +316,19 @@ function writeCrewPage(crew) {
 <a href="#" onclick="actualPage = 2.2; extractJSON('data.json', (err, data) => {});return false;" class="crewBullets" id="crewBullet2"></a>
 <a href="#" onclick="actualPage = 2.3; extractJSON('data.json', (err, data) => {});return false;" class="crewBullets" id="crewBullet3"></a>
 `;
+
+
+
+actualPageLastChar = String(actualPage);
+actualPageLastChar = actualPageLastChar.charAt(2);
+if (actualPageLastChar == "") {
+  actualPageLastChar = 0;
+}
+//aplicando estillo a bullet activa
+document.getElementsByClassName("crewBullets")[actualPageLastChar].style.background = "white"
+
+
+
   //colocando titulo del crew
   role = document.getElementById("subTitle");
   role.textContent = crew.role;
@@ -314,6 +346,8 @@ function writeCrewPage(crew) {
   //colocando contenido
   mainText = document.getElementById("textAfterTitle");
   mainText.textContent = crew.bio;
+
+  document.getElementById("textAfterTitle").classList.add("textAfterNameCrew");
 
   /*  
   !aqui es donde voy a hacer las modificaciones de  los bullets para el cambio de imagenes

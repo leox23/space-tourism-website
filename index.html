@@ -16,10 +16,10 @@
   <title>Space tourism website</title>
 </head>
 
-<body onLoad="actualPage = 2; extractJSON('data.json', (err, data) => {
+<body onLoad="actualPage = 3; extractJSON('data.json', (err, data) => {
               console.log(data);
 });">
-  <nav class="sidebar">
+  <nav class="sidebar" id="sidebar">
     <div class="sidebarChildContainer">
       <a href="#" onclick="actualPage = 0; extractJSON('data.json', (err, data) => {});return false;" class="link-page"><span>00</span> HOME</a>
       <a href="#" onclick="actualPage = 1; extractJSON('data.json', (err, data) => {});return false;" class="link-page"><span>01</span> DESTINATION</a>
@@ -27,7 +27,7 @@
       <a href="#" onclick="actualPage = 3; extractJSON('data.json', (err, data) => {});return false;" class="link-page"><span>03</span> TECHNOLOGY</a>
     </div>
   </nav>
-  <img src="assets/shared/logo.svg" id="logo" alt="logo of webpage">
+  <img src="assets/shared/logo.svg" id="logo" alt="logo of webpage" onClick="actualPage = 0; extractJSON('data.json', (err, data) => {});">
   <img src="assets/shared/icon-hamburger.svg" class="btn" id="btn" alt="hamburger button">
   <main>
     <p id="textBeforeTitle"> <b>02</b> Meet your crew</p>
@@ -36,7 +36,7 @@
 
         <!-- !recuerda colocar display none en la imagen  -->
     <img style="" id="mainImg">
-    <div id="containerTabs" class="containerTabs">
+    <div id="containerTabs">
     </div>
     <p id="subTitle"></p>
     <h1 id="main-title"></h1>

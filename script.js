@@ -132,7 +132,7 @@ function clearPage() {
   document.querySelector(".explore").style.display = "none";
 
   //para desaparecer la barra lateral
-  document.querySelector("body > nav").classList.remove("sidebar-open");
+  document.querySelector("#sidebar").classList.remove("sidebar-open");
 
   //hidding
   // de la pagina 02 destinations
@@ -250,8 +250,7 @@ function writeTheRestOfThePage(
 
   //cambiando imagen
   
-  
-  document.getElementById("mainImg").src = pageContent.images.webp;
+  if (page != "technology") {  document.getElementById("mainImg").src = pageContent.images.webp;  }
 
   //modificando atributo alt de la imagen
   altTemp = "Photo of " + pageContent.name;
@@ -276,8 +275,8 @@ ${page == "destination" ? allContentPage[1].name : page == "crew" ? "" : "2"}
   }">
 ${page == "destination" ? allContentPage[2].name : page == "crew" ? "" : "3"}
 </a>
-${ (page != "technology") ? `<a href="#" onclick="actualPage = '${pageNumber}.3'; extractJSON('data.json', (err, data) => {});return false;" class="${classTab[pageNumber]}">
-page == "destination" ? allContentPage[3].name : ""
+${ (page != "technology") ? 
+`<a href="#" onclick="actualPage = '${pageNumber}.3'; extractJSON('data.json', (err, data) => {});return false;" class="${classTab[pageNumber]}"> ${page == "destination" ? allContentPage[3].name : ""}
 </a>` : ""
 }
 `;
@@ -362,8 +361,11 @@ pbase.after(hr);
     04 Technology
 ######################################################################
 */ case "technology":
-      document.getElementById("mainImg").src = pageContent.images.portrait
-      document.getElementById("mainImg").classList.add("imgTech");
+//alert(`url("${pageContent.images.portrait}")`)
+//eliminando img tag para trabajar con bacgroundimg
+      document.querySelector("#mainImg").style.display = "none  ";
+      document.getElementById("imgTechDiv").style.background = `url("${pageContent.images.portrait}")`
+      document.getElementById("imgTechDiv").classList.add("imgTech");
       document.getElementById("containerTabs").classList.add("containerNumbesTech");
 
       //borrando los bordes para colocar el correspondiente

@@ -315,6 +315,8 @@ hr {
 .imgTech {
   width: 100%;
   height: 170px;
+  background-size: 104%!important;
+  background-position: 50% 82% !important;
 }
 
 .beforeName{

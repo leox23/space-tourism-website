@@ -13,7 +13,6 @@ html body {
   box-sizing: inherit;
 }
 
-
 /*
 ######################################################################
                Superior part
@@ -180,7 +179,7 @@ p {
 }
 
 .textBeforeTitle-destination {
-  margin:-2px 0px 35px 0px;
+  margin: -2px 0px 35px 0px;
 }
 
 .mainImgPlanet {
@@ -189,7 +188,6 @@ p {
   margin: 0px;
 }
 
-
 .containerTabs {
   width: 70%;
   display: flex;
@@ -197,16 +195,16 @@ p {
 }
 
 .destinationTab {
-padding: 29px 0px 10px 0px;  
-margin-bottom: 12px;
-font-size: 14px;
-font-weight: 400;
-color:  white;
-text-transform: uppercase;
-text-decoration: none ;
-font-family: "Barlow Condensed";
-line-height: 17px;
-letter-spacing: 2.3625px;
+  padding: 29px 0px 10px 0px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: "Barlow Condensed";
+  line-height: 17px;
+  letter-spacing: 2.3625px;
 }
 
 .main-title-destination {
@@ -222,7 +220,7 @@ letter-spacing: 2.3625px;
 hr {
   margin: 23px 0px 20px 0px;
   width: 80%;
-  opacity: .5;
+  opacity: 0.5;
   height: 1px;
   z-index: -1;
 }
@@ -230,7 +228,7 @@ hr {
 .containerDescriptionDestinations {
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   padding: 0px;
   height: 100xp;
 }
@@ -247,7 +245,7 @@ hr {
 
 .dataDestination {
   margin: 0px;
-  padding-top:2px;  
+  padding-top: 2px;
   padding-bottom: 20px;
   color: white;
   font-family: Bellefair;
@@ -272,8 +270,8 @@ hr {
 }
 
 .bulletsContainer {
-  border-top: 1px solid #666B88;
-  width: 87.20%;
+  border-top: 1px solid #666b88;
+  width: 87.2%;
   height: 10px;
   display: flex;
   justify-content: center;
@@ -285,7 +283,7 @@ hr {
   height: 10px;
   margin: 0px 8px;
   padding: 0px;
-  background: #666B88;
+  background: #666b88;
   border-radius: 100px;
 }
 
@@ -297,7 +295,7 @@ hr {
   margin: 0px;
   font-size: 1rem;
   opacity: 0.5;
-  text-transform: uppercase;  
+  text-transform: uppercase;
   font-family: Bellefair;
 }
 
@@ -317,8 +315,40 @@ hr {
 .imgTech {
   width: 100%;
   height: 170px;
-  
-
 }
 
+.beforeName{
+  padding-top: 12px;
+  height: 17px;
+  color: #d0d6f9;
+  font-family: "Barlow Condensed";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: 2.3625px;
+  text-transform: uppercase;
+}
+
+.containerNumbesTech {
+  padding-top: 33px;
+  display:flex;
+  justify-content: space-between;
+  width: 40%;
+  align-items: center;
+}
+
+.tabNumbers {
+  width: 40px;
+  height: 40px;
+  padding: 11px 0px 0px 3px;
+  border-radius: 100px;
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  font-family: "Bellefair";
+  line-height: 17px;
+  letter-spacing: 2.3625px;
+  text-align: center;
+}
 

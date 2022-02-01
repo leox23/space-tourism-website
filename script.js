@@ -12,7 +12,6 @@ $(".btn").on("click", function () {
     $(this).attr("src", "assets/shared/icon-hamburger.svg");
   }
 });
-
 /*
 ######################################################################
                Reading JSON file
@@ -31,7 +30,6 @@ function extractJSON(tasksList, callbackFunc) {
       const data = JSON.parse(request.responseText);
       /*
           ! tengo que trabajar desde adentro, no hay forma de exportar las variables desde funcion arrow
-          
           home = data.home[0]
           destinations = data.destinations
           crew = data.crew
@@ -260,29 +258,28 @@ function writeTheRestOfThePage(
   document.getElementById("mainImg").setAttribute("alt", altTemp);
 
   //class de los tabs
-  classTab = ["", "destinationTab", "crewBullets", "??tech"];
+  classTab = ["", "destinationTab", "crewBullets", "tabNumbers"];
   //creando pestañas
   document.getElementById("containerTabs").innerHTML = `
 <a href="#" onclick="actualPage = '${pageNumber}.0'; extractJSON('data.json', (err, data) => {});return false;" class="${
     classTab[pageNumber]
-  }" id="destinationTab0">
+  }">
 ${page == "destination" ? allContentPage[0].name : page == "crew" ? "" : "1"}
 </a>
 <a href="#" onclick="actualPage = '${pageNumber}.1'; extractJSON('data.json', (err, data) => {});return false;" class="${
     classTab[pageNumber]
-  }" id="destinationTab1">
+  }">
 ${page == "destination" ? allContentPage[1].name : page == "crew" ? "" : "2"}
 </a>
 <a href="#" onclick="actualPage = '${pageNumber}.2'; extractJSON('data.json', (err, data) => {});return false;" class="${
     classTab[pageNumber]
-  }" id="destinationTab2">
+  }">
 ${page == "destination" ? allContentPage[2].name : page == "crew" ? "" : "3"}
 </a>
-<a href="#" onclick="actualPage = '${pageNumber}.3'; extractJSON('data.json', (err, data) => {});return false;" class="${
-    classTab[pageNumber]
-  }" id="destinationTab3">
-${page == "destination" ? allContentPage[3].name : page == "crew" ? "" : ""}
-</a>
+${ (page != "technology") ? `<a href="#" onclick="actualPage = '${pageNumber}.3'; extractJSON('data.json', (err, data) => {});return false;" class="${classTab[pageNumber]}">
+page == "destination" ? allContentPage[3].name : ""
+</a>` : ""
+}
 `;
 
   switch (page) {
@@ -367,6 +364,25 @@ pbase.after(hr);
 */ case "technology":
       document.getElementById("mainImg").src = pageContent.images.portrait
       document.getElementById("mainImg").classList.add("imgTech");
+      document.getElementById("containerTabs").classList.add("containerNumbesTech");
+
+      //borrando los bordes para colocar el correspondiente
+      document.querySelectorAll(".tabNumbers").forEach((element) => {
+        element.style.border = "1px solid gray";
+      });
+      //colocando borde a pestaña correspondiente
+      actualTabNumber = document.getElementsByClassName("tabNumbers")[actualPageLastChar];
+      actualTabNumber.style.border = "1px solid white";
+      actualTabNumber.style.background = "white";
+      actualTabNumber.style.color = "black";
+      
+      //colocando titulo del crew
+      beforeName = document.getElementById("subTitle");
+      beforeName.textContent = "the terminology...";
+      beforeName.classList.add("beforeName");
+
+      mainText.textContent = pageContent.description
+
 
       break;
   }

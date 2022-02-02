@@ -47,6 +47,7 @@ function extractJSON(tasksList, callbackFunc) {
   console.log(home);
   console.log(subHeading);
           */
+
       actualPageLastChar = actualPage.charAt(2);
       pageNumber = actualPage.charAt(0);
       pageSubHeadingNumber = `0${actualPage.charAt(0)}`;
@@ -188,6 +189,13 @@ function writePage(
   //background-crew-mobile.jpg - background-home-tablet.jpg - background-home-desktop.jpg
   bodyBackground = `black url("assets/${page}/background-${page}-mobile.jpg") no-repeat`;
   document.body.style.background = bodyBackground;
+
+  document.body.style.backgroundSize = `100% ${screen.height}px`;
+         /*
+  background-size: 100% 100% !important;
+  padding-bottom: 30px !important; 
+*/
+
 
   subHead = document.getElementById("textBeforeTitle");
   subHead.textContent = subHeading;

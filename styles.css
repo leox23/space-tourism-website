@@ -129,7 +129,7 @@ h1 {
   right: -254px;
   overflow: hidden;
   z-index: 0;
-  transition: 0.6s all;
+  transition: .6s all !important;
 }
 
 .sidebar-open {
@@ -264,7 +264,6 @@ hr {
         03 Crew
 ######################################################################
 */
-
 .mainImgCrew {
   margin-top: 10px;
   width: 177.12px;
@@ -316,8 +315,8 @@ hr {
 */
 .imgTech {
   width: 100%;
-  height: 170px;
-  background-size: 104%!important;
+  height: 155px !important;
+  background-size: 104% !important;
   background-position: 50% 82% !important;
 }
 

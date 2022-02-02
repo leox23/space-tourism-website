@@ -12,6 +12,21 @@ $(".btn").on("click", function () {
     $(this).attr("src", "assets/shared/icon-hamburger.svg");
   }
 });
+/* 
+!suplantacion de codigo para la eliminacion de Jquery
+!   :(
+!por alguna razon reacciona mas lento en JS vanilla, quiza es perdida de memoria
+document.getElementById("btn").addEventListener('click', function (){
+  document.getElementById("btn").classList.toggle("close-btn");
+  document.getElementById("sidebar").classList.toggle("sidebar-open");
+  
+  if (document.getElementById("btn").classList.contains("close-btn")) {
+    document.getElementById("btn").src = "assets/shared/icon-close.svg";
+  } else {
+    document.getElementById("btn").src = "assets/shared/icon-hamburger.svg";
+  }
+}, false);
+*/
 /*
 ######################################################################
                Reading JSON file
@@ -29,7 +44,6 @@ function extractJSON(tasksList, callbackFunc) {
     if (request.readyState === 4 && request.status === 200) {
       const data = JSON.parse(request.responseText);
       /*
-          ! tengo que trabajar desde adentro, no hay forma de exportar las variables desde funcion arrow
           home = data.home[0]
           destinations = data.destinations
           crew = data.crew
@@ -47,6 +61,8 @@ function extractJSON(tasksList, callbackFunc) {
   console.log(home);
   console.log(subHeading);
           */
+
+
 
       actualPageLastChar = actualPage.charAt(2);
       pageNumber = actualPage.charAt(0);
@@ -128,17 +144,18 @@ function clearPage() {
   //colocar icono de hamburguesa en sidebar nuevamente para
 
   //document.querySelector("#btn").classList.toggle("close-btn");
+  //para desaparecer la barra lateral
+document.querySelector("#sidebar").classList.remove("sidebar-open");
+if (document.querySelector("#btn").classList.contains("close-btn")) {
+  document.querySelector("#btn").classList.toggle("close-btn");
+}
 
   //de la primera pagin
   document.querySelector(".explore").style.display = "none";
 
   document.getElementById("imgTechDiv").style.display = "none"
 
-  //para desaparecer la barra lateral
-  document.querySelector("#sidebar").classList.remove("sidebar-open");
-  if (document.querySelector("#btn").classList.contains("close-btn")) {
-    document.querySelector("#btn").classList.toggle("close-btn");
-  }
+  
   //cambiar el boton X
   document.querySelector("#btn").src = "assets/shared/icon-hamburger.svg";
 

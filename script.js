@@ -135,6 +135,11 @@ function clearPage() {
 
   //para desaparecer la barra lateral
   document.querySelector("#sidebar").classList.remove("sidebar-open");
+  if (document.querySelector("#btn").classList.contains("close-btn")) {
+    document.querySelector("#btn").classList.toggle("close-btn");
+  }
+  //cambiar el boton X
+  document.querySelector("#btn").src = "assets/shared/icon-hamburger.svg";
 
   //hidding
   // de la pagina 02 destinations
@@ -364,11 +369,11 @@ pbase.after(hr);
 ######################################################################
 */ case "technology":
 //alert(`url("${pageContent.images.portrait}")`)
-//eliminando img tag para trabajar con bacgroundimg
+//eliminando img tag para trabajar con background-img
       document.querySelector("#mainImg").style.display = "none";
       document.getElementById("imgTechDiv").style.display = "block"
       document.getElementById("imgTechDiv").classList.add("imgTech");
-      document.getElementById("imgTechDiv").style.background = `url("${pageContent.images.portrait}")`
+      document.getElementById("imgTechDiv").style.background = `url("${pageContent.images.landscape}")`
 
 
 

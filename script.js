@@ -191,11 +191,7 @@ function writePage(
   document.body.style.background = bodyBackground;
 
   document.body.style.backgroundSize = `100% ${screen.height}px`;
-         /*
-  background-size: 100% 100% !important;
-  padding-bottom: 30px !important; 
-*/
-
+  document.body.style.paddingBottom = "30px";
 
   subHead = document.getElementById("textBeforeTitle");
   subHead.textContent = subHeading;

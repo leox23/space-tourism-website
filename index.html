@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,12 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap"
     rel="stylesheet">
-
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
   <link rel="stylesheet" href="styles.css">
   <title>Space tourism website</title>
 </head>
-
 <body onLoad="actualPage = '0'; extractJSON('data.json', (err, data) => {
               console.log(data);
 });">
@@ -31,10 +28,6 @@
   <img src="assets/shared/icon-hamburger.svg" class="btn" id="btn" alt="hamburger button">
   <main>
     <p id="textBeforeTitle"></p>
-
-
-
-        <!-- !recuerda colocar display none en la imagen  -->
     <img style="display:none" id="mainImg">
     <div id="imgTechDiv"> </div>
     <div id="containerTabs"></div>
@@ -54,10 +47,7 @@
     <div onClick="actualPage = '1'; extractJSON('data.json', (err, data) => {});" class="explore" style="display:none;">
       <p id="exploreText"></p>
     </div> 
-
-
   </main>
-
   <!--  JQuery CDN link  -->
   <script src="lib/jquery-3.6.0.min.js"></script>
   <script type="application/json" src="data.json"></script>

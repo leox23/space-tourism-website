@@ -190,7 +190,8 @@ function writePage(
   bodyBackground = `black url("assets/${page}/background-${page}-mobile.jpg") no-repeat`;
   document.body.style.background = bodyBackground;
 
-  document.body.style.backgroundSize = `100% ${screen.height}px`;
+  document.body.style.backgroundSize = `100%`;
+  //document.body.style.backgroundSize = `100% ${screen.height}px`;
   document.body.style.paddingBottom = "30px";
 
   subHead = document.getElementById("textBeforeTitle");

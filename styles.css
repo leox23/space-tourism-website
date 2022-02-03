@@ -5,6 +5,7 @@ html body {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  overflow-x: hidden;
   min-height: 100%;
 }
 
@@ -12,12 +13,13 @@ html body {
 *,
 *::before,
 *::after {
+  /*border: 1px solid white;*/
   box-sizing: inherit;
 }
 
 /*
 ######################################################################
-               Superior part
+    Superior part
 ######################################################################
 */
 #logo {
@@ -68,7 +70,7 @@ h1 {
   margin: 0px;
   padding: 0.5rem 0rem;
   color: white;
-  font-size: 5rem;
+  font-size: clamp(80px, calc(6.572769953051644vw + 55.352112676056336px), 150px);
   font-weight: 400;
   text-transform: uppercase;
 }
@@ -85,7 +87,7 @@ h1 {
 
 #textBeforeTitle {
   letter-spacing: 0.169rem;
-  font-size: 1rem;
+  font-size: clamp(16px, calc(1.1267605633802817vw + 11.774647887323944px), 28px);
   text-transform: uppercase;
 }
 
@@ -93,7 +95,7 @@ h1 {
   margin: 0px;
   padding: 0.5625rem 1.5rem;
   font-family: "Barlow", sans-serif;
-  font-size: 0.938rem;
+  font-size: clamp(15px, calc(0.28169014084507044vw + 13.943661971830986px), 18px);
   text-align: center;
   line-height: 1.56rem;
 }
@@ -112,7 +114,7 @@ h1 {
 
 .explore > p {
   color: #0b0d17;
-  font-size: 20px;
+  font-size: clamp(20px, calc(1.1267605633802817vw + 15.774647887323944px), 32px);
   letter-spacing: 1.25px;
   text-transform: uppercase;
   display: block;
@@ -120,7 +122,7 @@ h1 {
 
 /*
 ######################################################################
-               Sidebar
+    Sidebar
 ######################################################################
 */
 .sidebar {
@@ -129,7 +131,7 @@ h1 {
   right: -254px;
   overflow: hidden;
   z-index: 0;
-  transition: .6s all !important;
+  transition: .6s all;
 }
 
 .sidebar-open {
@@ -157,7 +159,7 @@ h1 {
   width: 100%;
   margin-top: 33px;
   padding-left: 32px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   color: white;
   letter-spacing: 0.169rem;
@@ -199,7 +201,7 @@ p {
 .destinationTab {
   padding: 29px 0px 10px 0px;
   margin-bottom: 12px;
-  font-size: 14px;
+  font-size: clamp(14px, calc(0.18779342723004694vw + 13.295774647887324px), 16px);
   font-weight: 400;
   color: white;
   text-transform: uppercase;
@@ -210,7 +212,7 @@ p {
 }
 
 .main-title-destination {
-  font-size: 3.5rem;
+  font-size: clamp(56px, calc(4.131455399061033vw + 40.50704225352113px), 100px);
   padding: 10px 0px 0px 0px;
 }
 
@@ -294,14 +296,14 @@ hr {
 
 .subtitleCrew {
   margin: 0px;
-  font-size: 1rem;
+  font-size: clamp(16px, calc(1.971830985915493vw + 8.6056338028169px), 37px);
   opacity: 0.5;
   text-transform: uppercase;
   font-family: Bellefair;
 }
 
 .crewName {
-  font-size: 1.5rem;
+  font-size: clamp(24px, calc(3.004694835680751vw + 12.732394366197184px), 56px);
 }
 
 .textAfterNameCrew {
@@ -325,7 +327,7 @@ hr {
   height: 17px;
   color: #d0d6f9;
   font-family: "Barlow Condensed";
-  font-size: 14px;
+  font-size: clamp(14px, calc(0.18779342723004694vw + 13.295774647887324px), 16px);
   font-weight: 400;
   line-height: 17px;
   text-align: center;
@@ -346,7 +348,7 @@ hr {
   height: 40px;
   padding: 11px 0px 0px 3px;
   border-radius: 100px;
-  font-size: 16px;
+  font-size: clamp(16px, calc(1.5023474178403755vw + 10.366197183098592px), 32px);
   color: white;
   text-decoration: none;
   font-family: "Bellefair";
@@ -355,3 +357,75 @@ hr {
   text-align: center;
 }
 
+/*
+######################################################################
+  Vistas para tablets 
+######################################################################
+*/
+@media only screen and (min-width: 768px) {
+#btn {
+display: none; 
+}
+
+.sidebar {
+  background: rgba(255,255,255,0.04);
+  box-sizing: border-box;
+  width: clamp(250px, calc(54.460093896713616vw + 45.774647887323965px), 830px);
+  height: 96px;
+  position: absolute;
+  right: 0;
+  z-index: 5;
+}
+
+.sidebarChildContainer {
+  box-sizing: border-box;
+  display:flex !important;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#number0, #number1, #number2, #number3 {
+  display:none;
+}
+
+.link-page:nth-child(1) {
+  margin: 0px;
+}
+
+.link-page {  
+  width: auto;
+  text-align: center;
+  padding: 35px 0px;
+  align-self: center;
+  margin: 0px;
+}
+
+#textBeforeTitle {
+  margin: 60px 0px -20px 0px !important;
+}
+
+#textAfterTitle {
+  padding: 41px 19.5% 0px 19.5% !important;
+}
+
+.explore {
+  width: 242px;
+  height: 242px;
+  border-radius:100%;
+}
+
+}
+
+
+
+/*
+######################################################################
+  Vista para Desktop
+######################################################################
+*/
+@media only screen and (min-width: 1200px) {
+  #number0, #number1, #number2, #number3 {
+    display:block;
+  }
+}

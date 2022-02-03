@@ -3,6 +3,7 @@
                Sidebar function
 ######################################################################
 */
+/*
 $(".btn").on("click", function () {
   $(".btn").toggleClass("close-btn");
   $(".sidebar").toggleClass("sidebar-open");
@@ -12,10 +13,12 @@ $(".btn").on("click", function () {
     $(this).attr("src", "assets/shared/icon-hamburger.svg");
   }
 });
+*/
 /* 
 !suplantacion de codigo para la eliminacion de Jquery
 !   :(
 !por alguna razon reacciona mas lento en JS vanilla, quiza es perdida de memoria
+*/
 document.getElementById("btn").addEventListener('click', function (){
   document.getElementById("btn").classList.toggle("close-btn");
   document.getElementById("sidebar").classList.toggle("sidebar-open");
@@ -26,7 +29,6 @@ document.getElementById("btn").addEventListener('click', function (){
     document.getElementById("btn").src = "assets/shared/icon-hamburger.svg";
   }
 }, false);
-*/
 /*
 ######################################################################
                Reading JSON file
@@ -160,8 +162,9 @@ if (document.querySelector("#btn").classList.contains("close-btn")) {
   document.querySelector("#btn").src = "assets/shared/icon-hamburger.svg";
 
   //hidding
-  // de la pagina 02 destinations
+  // de la pagina 02 / 03 destinations
   document.getElementById("mainImg").removeAttribute("class");
+  document.getElementById("mainImg").removeAttribute("src");
 
   //desapareciedo contenedor pestañas y eliminando elementos internos
   allTabs = document.querySelectorAll(".crewBullets");
@@ -263,6 +266,12 @@ function writePage(
   }
 }
 
+
+/*
+######################################################################
+    Other pages
+######################################################################
+*/
 function writeTheRestOfThePage(
   page,
   actualPageLastChar,

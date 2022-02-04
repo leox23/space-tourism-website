@@ -1,34 +1,23 @@
 /*
 ######################################################################
-               Sidebar function
+    Sidebar y button toggle
 ######################################################################
 */
-/*
-$(".btn").on("click", function () {
-  $(".btn").toggleClass("close-btn");
-  $(".sidebar").toggleClass("sidebar-open");
-  if ($("#btn").hasClass("close-btn")) {
-    $(this).attr("src", "assets/shared/icon-close.svg");
-  } else {
-    $(this).attr("src", "assets/shared/icon-hamburger.svg");
-  }
-});
-*/
-/* 
-!suplantacion de codigo para la eliminacion de Jquery
-!   :(
-!por alguna razon reacciona mas lento en JS vanilla, quiza es perdida de memoria
-*/
-document.getElementById("btn").addEventListener('click', function (){
-  document.getElementById("btn").classList.toggle("close-btn");
-  document.getElementById("sidebar").classList.toggle("sidebar-open");
-  
-  if (document.getElementById("btn").classList.contains("close-btn")) {
-    document.getElementById("btn").src = "assets/shared/icon-close.svg";
-  } else {
-    document.getElementById("btn").src = "assets/shared/icon-hamburger.svg";
-  }
-}, false);
+document.getElementById("btn").addEventListener(
+  "click",
+  function () {
+    document.getElementById("btn").classList.toggle("close-btn");
+    document.getElementById("sidebar").classList.toggle("sidebar-open");
+
+    if (document.getElementById("btn").classList.contains("close-btn")) {
+      document.getElementById("btn").src = "assets/shared/icon-close.svg";
+    } else {
+      document.getElementById("btn").src = "assets/shared/icon-hamburger.svg";
+    }
+  },
+  false
+);
+
 /*
 ######################################################################
                Reading JSON file
@@ -45,27 +34,6 @@ function extractJSON(tasksList, callbackFunc) {
   request.addEventListener("readystatechange", () => {
     if (request.readyState === 4 && request.status === 200) {
       const data = JSON.parse(request.responseText);
-      /*
-          home = data.home[0]
-          destinations = data.destinations
-          crew = data.crew
-          technology = data.technology
-          subHeadings = data.subHeadings[0]
-          console.log("desde dentro de la funcion")
-          console.log(home)
-          console.log(destinations)
-          console.log(crew)
-          console.log(technology)
-          console.log(subHeadings)
-
-
-          console.log("desde dentro de write home");
-  console.log(home);
-  console.log(subHeading);
-          */
-
-
-
       actualPageLastChar = actualPage.charAt(2);
       pageNumber = actualPage.charAt(0);
       pageSubHeadingNumber = `0${actualPage.charAt(0)}`;
@@ -112,9 +80,7 @@ function extractJSON(tasksList, callbackFunc) {
           data.subHeadings[0].crew,
           data.crew
         );
-        
-      }
-      else if (pageNumber == 3) {
+      } else if (pageNumber == 3) {
         writePage(
           page,
           actualPageLastChar,
@@ -122,7 +88,6 @@ function extractJSON(tasksList, callbackFunc) {
           data.subHeadings[0].technology,
           data.technology
         );
-        
       }
     } else if (request.readyState === 4) {
       callbackFunc("no se han podido obtener los datos", undefined);
@@ -144,20 +109,18 @@ function sleep(time) {
 function clearPage() {
   //TODO tengo que especificar que se debe eliminar para cada pagina, y no estar eliminando a la brava
   //colocar icono de hamburguesa en sidebar nuevamente para
-
   //document.querySelector("#btn").classList.toggle("close-btn");
   //para desaparecer la barra lateral
-document.querySelector("#sidebar").classList.remove("sidebar-open");
-if (document.querySelector("#btn").classList.contains("close-btn")) {
-  document.querySelector("#btn").classList.toggle("close-btn");
-}
+  document.querySelector("#sidebar").classList.remove("sidebar-open");
+  if (document.querySelector("#btn").classList.contains("close-btn")) {
+    document.querySelector("#btn").classList.toggle("close-btn");
+  }
 
   //de la primera pagin
   document.querySelector(".explore").style.display = "none";
 
-  document.getElementById("imgTechDiv").style.display = "none"
+  document.getElementById("imgTechDiv").style.display = "none";
 
-  
   //cambiar el boton X
   document.querySelector("#btn").src = "assets/shared/icon-hamburger.svg";
 
@@ -171,10 +134,14 @@ if (document.querySelector("#btn").classList.contains("close-btn")) {
   allTabs.forEach((element) => {
     element.remove();
   });
-  document.getElementById("containerTabs").style.display = "none";
+
+  document.querySelector("#textBeforeTitle").removeAttribute("class");
+  document.querySelector("#textAfterTitle").removeAttribute("class");
 
   //por pag 01 02 y 03
   document.getElementById("containerTabs").removeAttribute("class");
+  document.getElementById("containerTabs").removeAttribute("style");
+  document.getElementById("containerTabs").textContent = "";
 
   //borrando detalles de planetas
   document.getElementsByClassName(
@@ -206,29 +173,27 @@ function writePage(
   allContentPage
 ) {
   clearPage();
-  //background-crew-mobile.jpg - background-home-tablet.jpg - background-home-desktop.jpg
   bodyBackground = `black url("assets/${page}/background-${page}-mobile.jpg") no-repeat`;
   document.body.style.background = bodyBackground;
 
   document.body.style.backgroundSize = `100%`;
-  //document.body.style.backgroundSize = `100% ${screen.height}px`;
   document.body.style.paddingBottom = "30px";
 
   subHead = document.getElementById("textBeforeTitle");
-  subHead.textContent = subHeading;
 
   title = document.getElementById("main-title");
-  
+
   title.textContent = pageContent.name;
   mainText = document.getElementById("textAfterTitle");
 
   switch (page) {
-/*
+    /*
 ######################################################################
     01 Home y basicos de los otros
 ######################################################################
-*/  case "home":
+*/ case "home":
       //el unico custom var del titulo
+      subHead.textContent = subHeading;
       title.textContent = pageContent.title;
       mainText.textContent = pageContent.mainText;
       button = document.getElementById("exploreText");
@@ -244,14 +209,13 @@ function writePage(
       mainText.classList.add("textAfterTitle-destination");
       break;
     case "crew":
+      subHead.classList.add("crewSubHeading");
       title.classList.add("crewName");
       mainText.textContent = pageContent.bio;
       break;
     case "technology":
       title.classList.add("crewName");
       mainText.textContent = pageContent.bio;
-
-
 
       break;
   }
@@ -264,8 +228,10 @@ function writePage(
       allContentPage
     );
   }
-}
 
+  //media query adjustments
+  mediaQuery(page);
+}
 
 /*
 ######################################################################
@@ -282,13 +248,16 @@ function writeTheRestOfThePage(
   //showing
   document.getElementById("mainImg").style.display = "inherit ";
   containerTabs = document.getElementById("containerTabs");
-  containerTabs.style.display = "flex";
+  containerTabs.classList.add("containerTabs");
+  //containerTabs.style.display = "flex";
   textBeforeTitle = document.getElementById("textBeforeTitle");
   textBeforeTitle.innerHTML = `<b>${pageSubHeadingNumber} </b>${subHeading}`;
 
   //cambiando imagen
-  
-  if (page != "technology") {  document.getElementById("mainImg").src = pageContent.images.webp;  }
+
+  if (page != "technology") {
+    document.getElementById("mainImg").src = pageContent.images.webp;
+  }
 
   //modificando atributo alt de la imagen
   altTemp = "Photo of " + pageContent.name;
@@ -313,20 +282,28 @@ ${page == "destination" ? allContentPage[1].name : page == "crew" ? "" : "2"}
   }">
 ${page == "destination" ? allContentPage[2].name : page == "crew" ? "" : "3"}
 </a>
-${ (page != "technology") ? 
-`<a href="#" onclick="actualPage = '${pageNumber}.3'; extractJSON('data.json', (err, data) => {});return false;" class="${classTab[pageNumber]}"> ${page == "destination" ? allContentPage[3].name : ""}
-</a>` : ""
+${
+  page != "technology"
+    ? `<a href="#" onclick="actualPage = '${pageNumber}.3'; extractJSON('data.json', (err, data) => {});return false;" class="${
+        classTab[pageNumber]
+      }"> ${page == "destination" ? allContentPage[3].name : ""}
+</a>`
+    : ""
 }
 `;
 
   switch (page) {
-/*
+    /*
 ######################################################################
   02 Destination
 ######################################################################
-*/  case "destination":
+*/ case "destination":
       //agregando clase de imagen
       document.getElementById("mainImg").classList.add("mainImgPlanet");
+      document
+        .getElementById("textBeforeTitle")
+        .classList.add("textBeforeTitle-destination");
+
       document.getElementsByClassName(
         "containerDescriptionDestinations"
       )[0].style.display = "flex";
@@ -365,11 +342,11 @@ pbase.after(hr);
 
 */
       break;
-/*
+    /*
 ######################################################################
     03 Crew
 ######################################################################
-*/  case "crew":
+*/ case "crew":
       //agregando clase de imagen
       document.getElementById("mainImg").classList.add("mainImgCrew");
 
@@ -394,40 +371,124 @@ pbase.after(hr);
         .getElementById("textAfterTitle")
         .classList.add("textAfterNameCrew");
       break;
-/*
+    /*
 ######################################################################
     04 Technology
 ######################################################################
 */ case "technology":
-//alert(`url("${pageContent.images.portrait}")`)
-//eliminando img tag para trabajar con background-img
+      //alert(`url("${pageContent.images.portrait}")`)
+
+      document.getElementById("textBeforeTitle").classList.add("subHeadTech");
+
+      //eliminando img tag para trabajar con background-img
       document.querySelector("#mainImg").style.display = "none";
-      document.getElementById("imgTechDiv").style.display = "block"
+      document.getElementById("imgTechDiv").style.display = "block";
       document.getElementById("imgTechDiv").classList.add("imgTech");
-      document.getElementById("imgTechDiv").style.background = `url("${pageContent.images.landscape}")`
-
-
-
-      document.getElementById("containerTabs").classList.add("containerNumbesTech");
+      document.getElementById(
+        "imgTechDiv"
+      ).style.background = `url("${pageContent.images.landscape}")`;
+      document
+        .getElementById("containerTabs")
+        .classList.add("containerNumbesTech");
 
       //borrando los bordes para colocar el correspondiente
       document.querySelectorAll(".tabNumbers").forEach((element) => {
         element.style.border = "1px solid gray";
       });
       //colocando borde a pestaña correspondiente
-      actualTabNumber = document.getElementsByClassName("tabNumbers")[actualPageLastChar];
+      actualTabNumber =
+        document.getElementsByClassName("tabNumbers")[actualPageLastChar];
       actualTabNumber.style.border = "1px solid white";
       actualTabNumber.style.background = "white";
       actualTabNumber.style.color = "black";
-      
+
       //colocando titulo del crew
       beforeName = document.getElementById("subTitle");
       beforeName.textContent = "the terminology...";
       beforeName.classList.add("beforeName");
 
-      mainText.textContent = pageContent.description
-
+      mainText.classList.add("mainTextTech");
+      mainText.textContent = pageContent.description;
 
       break;
+  }
+}
+
+/*
+######################################################################
+    Los media querys
+######################################################################
+*/
+function mediaQuery(page) {
+  let mqls = [
+    window.matchMedia("screen and (min-width: 768px) and (max-width: 991px"),
+    window.matchMedia("screen and (min-width: 992px)"),
+  ];
+  function test(mql) {
+    if (!mqls[0].matches && !mqls[1].matches) {
+      //Moviles
+      console.log("SM");
+      bodyBackground = `black url("assets/${page}/background-${page}-mobile.jpg") no-repeat`;
+      document.body.style.background = bodyBackground;
+
+      document.getElementById("sidebar").classList.remove(".sidebar-nonSmall");
+    } else if (mqls[0].matches) {
+      //Tablets
+      console.log("MD");
+      bodyBackground = `black url("assets/${page}/background-${page}-tablet.jpg") no-repeat`;
+      document.body.style.background = bodyBackground;
+
+      //para eliminar el sidebar y tenerlo como un nav normal
+      document.getElementById("sidebar").classList.add("sidebar-nonSmall");
+      //en caso de ser una pagina noHome
+      document
+        .getElementById("textBeforeTitle")
+        .classList.add("textBeforeTitle-123-tablet");
+      switch (page) {
+        case "home":
+          document
+            .getElementById("textBeforeTitle")
+            .classList.remove("textBeforeTitle-123-tablet");
+          document
+            .getElementById("textBeforeTitle")
+            .classList.add("textBeforeTitle-home-tablet");
+
+          break;
+        case "destination":
+          document
+            .querySelector("#mainImg")
+            .classList.add("mainImgPlanet-tablet");
+
+          document
+            .querySelector(".containerTabs")
+            .classList.add("containerTabs-tablet");
+
+          document
+            .querySelector(".main-title-destination")
+            .classList.add("main-title-destination-tablet");
+
+          document
+            .querySelector(".textAfterTitle-destination")
+            .classList.add("textAfterTitle-destination-tablet");
+
+          break;
+
+        case "crew":
+          break;
+
+        case "technology":
+          break;
+      }
+    } else if (mqls[1].matches) {
+      //Desktops
+      console.log("LG");
+      bodyBackground = `black url("assets/${page}/background-${page}-desktop.jpg") no-repeat`;
+      document.body.style.background = bodyBackground;
+    }
+  }
+
+  for (let i = 0; i < mqls.length; i++) {
+    test(mqls[i]);
+    mqls[i].addListener(test);
   }
 }

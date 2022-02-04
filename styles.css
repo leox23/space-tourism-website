@@ -1,14 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap");
 
 html body {
-  border: 0px;
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
   overflow-x: hidden;
-  min-height: 100%;
-}
 
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+}
 
 *,
 *::before,
@@ -23,41 +29,48 @@ html body {
 ######################################################################
 */
 #logo {
-  width: 40px;
-  height: 40px;
   position: absolute;
   top: 24px;
   left: 24px;
+
+  width: 40px;
+  height: 40px;
 }
 
 /* -------------- Burger styling ----------------- */
 .btn {
-  width: 24px;
-  height: 21px;
   position: fixed;
+  z-index: 5;
   top: 22px;
   right: 17px;
-  transform: rotate(-0.5turn);
+
+  width: 24px;
+  height: 21px;
+
   transition: all 0.5s ease-out;
-  z-index: 5;
+  transform: rotate(-0.5turn);
 }
 
 /* ----------- close btn style------------- */
 .close-btn {
-  width: 21px;
-  height: 21px;
+  z-index: 5;
   top: 22px;
   right: 17;
-  transform: rotate(0.5turn);
+
+  width: 21px;
+  height: 21px;
+
   transition: all 0.5s ease-out;
-  z-index: 5;
+  transform: rotate(0.5turn);
 }
 
 main {
-  margin-top: 0px;
-  padding-top: 13.97vh;
   display: flex;
   flex-direction: column;
+
+  margin-top: 0;
+  padding-top: 13.97vh;
+
   align-items: center;
 }
 
@@ -67,12 +80,19 @@ h1,
 }
 
 h1 {
-  margin: 0px;
-  padding: 0.5rem 0rem;
-  color: white;
-  font-size: clamp(80px, calc(6.572769953051644vw + 55.352112676056336px), 150px);
+  font-size: clamp(
+    80px,
+    calc(6.572769953051644vw + 55.352112676056336px),
+    150px
+  );
   font-weight: 400;
+
+  margin: -28px 0 0 0;
+  padding: 0.5rem 0rem;
+
   text-transform: uppercase;
+
+  color: white;
 }
 
 #textBeforeTitle,
@@ -85,39 +105,61 @@ h1 {
   color: #d0d6f9;
 }
 
-#textBeforeTitle {
+main > p:first-child {
+  font-size: clamp(
+    16px,
+    calc(1.1267605633802817vw + 11.774647887323944px),
+    28px
+  );
+
   letter-spacing: 0.169rem;
-  font-size: clamp(16px, calc(1.1267605633802817vw + 11.774647887323944px), 28px);
   text-transform: uppercase;
 }
 
-#textAfterTitle {
-  margin: 0px;
-  padding: 0.5625rem 1.5rem;
+h1 + p {
   font-family: "Barlow", sans-serif;
-  font-size: clamp(15px, calc(0.28169014084507044vw + 13.943661971830986px), 18px);
-  text-align: center;
+  font-size: clamp(
+    15px,
+    calc(0.28169014084507044vw + 13.943661971830986px),
+    18px
+  );
   line-height: 1.56rem;
+
+  margin: 0 11%;
+  padding: 0.5625rem 0 20px 0;
+
+  text-align: center;
 }
 
 .explore {
+  display: flex;
+
   width: 150px;
   height: 150px;
-  background: white;
-  border-radius: 100px;
+  margin-top: 10vh;
+
   vertical-align: middle;
-  display: flex;
+
+  border-radius: 100%;
+  background: white;
+
   align-items: center;
   justify-content: center;
-  margin-top: 11.1vh;
 }
 
 .explore > p {
-  color: #0b0d17;
-  font-size: clamp(20px, calc(1.1267605633802817vw + 15.774647887323944px), 32px);
+  font-size: clamp(
+    20px,
+    calc(1.1267605633802817vw + 15.774647887323944px),
+    32px
+  );
+
+  display: block;
+
   letter-spacing: 1.25px;
   text-transform: uppercase;
-  display: block;
+
+  color: #0b0d17;
 }
 
 /*
@@ -126,27 +168,34 @@ h1 {
 ######################################################################
 */
 .sidebar {
-  width: 0px;
   position: fixed;
-  right: -254px;
-  overflow: hidden;
   z-index: 0;
-  transition: .6s all;
+  right: -254px;
+
+  overflow: hidden;
+
+  width: 0;
+
+  transition: 0.6s all;
 }
 
 .sidebar-open {
+  position: fixed;
+  z-index: 5;
+  right: 0;
+
+  overflow: hidden;
+
   width: 254px;
   height: 100%;
-  overflow: hidden;
-  position: fixed;
-  right: 0;
+
   backdrop-filter: blur(50px);
-  z-index: 5;
 }
 
 .sidebarChildContainer {
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: start;
 }
@@ -156,14 +205,17 @@ h1 {
 }
 
 .link-page {
+  font-size: 1rem;
+  font-weight: 400;
+
   width: 100%;
   margin-top: 33px;
   padding-left: 32px;
-  font-size: 1rem;
-  font-weight: 400;
-  color: white;
-  letter-spacing: 0.169rem;
+
   text-decoration: none;
+  letter-spacing: 0.169rem;
+
+  color: white;
   /* estilo de borde para colocar segun en la pagina que este
   border-right: 4px solid #fff; */
 }
@@ -174,7 +226,7 @@ h1 {
 
 /*
 ######################################################################
-              01 Destination page
+    01 Destination page Mobile
 ######################################################################
 */
 
@@ -183,111 +235,148 @@ p {
 }
 
 .textBeforeTitle-destination {
-  margin: -2px 0px 35px 0px;
+  margin-top: -21px;
 }
 
 .mainImgPlanet {
   width: 170px;
   height: 170px;
-  margin: 0px;
+  margin: 15px 0 0 0;
 }
 
 .containerTabs {
-  width: 70%;
   display: flex;
+
+  width: 236px;
+
   justify-content: space-between;
 }
 
 .destinationTab {
-  padding: 29px 0px 10px 0px;
-  margin-bottom: 12px;
-  font-size: clamp(14px, calc(0.18779342723004694vw + 13.295774647887324px), 16px);
-  font-weight: 400;
-  color: white;
-  text-transform: uppercase;
-  text-decoration: none;
   font-family: "Barlow Condensed";
+  font-size: clamp(
+    14px,
+    calc(0.18779342723004694vw + 13.295774647887324px),
+    16px
+  );
+  font-weight: 400;
   line-height: 17px;
+
+  margin-bottom: 12px;
+  padding: 27px 0 10px 0;
+
+  text-decoration: none;
   letter-spacing: 2.3625px;
+  text-transform: uppercase;
+
+  color: white;
 }
 
 .main-title-destination {
-  font-size: clamp(56px, calc(4.131455399061033vw + 40.50704225352113px), 100px);
-  padding: 10px 0px 0px 0px;
+  font-size: clamp(
+    56px,
+    calc(4.131455399061033vw + 40.50704225352113px),
+    120px
+  );
+
+  margin: -32px 0 0 0;
+  padding: 10px 0 0 0;
 }
 
 .textAfterTitle-destination {
-  margin-top: 0px;
   line-height: 25px;
+
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding-top: 0;
+  padding-bottom: 25px;
+
+  border-bottom: 1px solid gray;
 }
 
 hr {
-  margin: 23px 0px 20px 0px;
-  width: 80%;
-  opacity: 0.5;
-  height: 1px;
   z-index: -1;
+
+  width: 80%;
+  height: 1px;
+  margin: 23px 0 20px 0;
+
+  opacity: 0.5;
 }
 
 .containerDescriptionDestinations {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0px;
+
   height: 100xp;
+  padding: 0;
+
+  align-items: center;
 }
 
 .descriptionData {
-  margin: 0px;
-  padding: 12px 10px;
   font-family: "Barlow Condensed", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2.3625px;
   font-size: 0.88rem;
   font-weight: 400;
+
+  margin: 0;
+  padding: 12px 10px;
+
+  letter-spacing: 2.3625px;
+  text-transform: uppercase;
 }
 
 .dataDestination {
-  margin: 0px;
-  padding-top: 2px;
-  padding-bottom: 20px;
-  color: white;
   font-family: Bellefair;
   font-size: 1.75rem;
   font-weight: 400;
+
+  margin: 0;
+  padding-top: 2px;
+  padding-bottom: 20px;
+
   text-transform: uppercase;
+
+  color: white;
 }
 
-#endGapFix {
-  padding-bottom: 28px;
-}
 /*
 ######################################################################
-        03 Crew
+    03 Crew
 ######################################################################
 */
+.crewSubHeading {
+  margin-top: -11px;
+}
+
 .mainImgCrew {
-  margin-top: 10px;
   width: 177.12px;
   height: 222px;
+  margin-top: 10px;
 }
 
 .bulletsContainer {
-  border-top: 1px solid #666b88;
+  display: flex;
+
   width: 87.2%;
   height: 10px;
-  display: flex;
+  padding: 39px 0;
+  padding-top: 37px;
+  padding-bottom: 43px;
+
+  border-top: 1px solid #666b88;
+
   justify-content: center;
-  padding: 39px 0px;
 }
 
 .crewBullets {
   width: 10px;
   height: 10px;
-  margin: 0px 8px;
-  padding: 0px;
-  background: #666b88;
+  margin: 0 8px;
+  padding: 0;
+
   border-radius: 100px;
+  background: #666b88;
 }
 
 .activeBullet {
@@ -295,18 +384,28 @@ hr {
 }
 
 .subtitleCrew {
-  margin: 0px;
-  font-size: clamp(16px, calc(1.971830985915493vw + 8.6056338028169px), 37px);
-  opacity: 0.5;
-  text-transform: uppercase;
   font-family: Bellefair;
+  font-size: clamp(16px, calc(1.971830985915493vw + 8.6056338028169px), 37px);
+
+  margin: 0;
+
+  text-transform: uppercase;
+
+  opacity: 0.5;
 }
 
 .crewName {
-  font-size: clamp(24px, calc(3.004694835680751vw + 12.732394366197184px), 56px);
+  font-size: clamp(
+    24px,
+    calc(3.004694835680751vw + 12.732394366197184px),
+    56px
+  );
+
+  margin: 0;
 }
 
 .textAfterNameCrew {
+  width: 88%;
   padding-bottom: 30px !important;
 }
 
@@ -315,46 +414,72 @@ hr {
     04 Technology
 ######################################################################
 */
+.subHeadTech {
+  margin-top: -12px;
+  margin-bottom: 31px;
+}
+
 .imgTech {
   width: 100%;
   height: 155px !important;
-  background-size: 104% !important;
+
   background-position: 50% 82% !important;
+  background-size: 104% !important;
 }
 
-.beforeName{
-  padding-top: 12px;
-  height: 17px;
-  color: #d0d6f9;
+.beforeName {
   font-family: "Barlow Condensed";
-  font-size: clamp(14px, calc(0.18779342723004694vw + 13.295774647887324px), 16px);
+  font-size: clamp(
+    14px,
+    calc(0.18779342723004694vw + 13.295774647887324px),
+    16px
+  );
   font-weight: 400;
   line-height: 17px;
+
+  height: 17px;
+  padding-top: 12px;
+
   text-align: center;
   letter-spacing: 2.3625px;
   text-transform: uppercase;
+
+  color: #d0d6f9;
 }
 
 .containerNumbesTech {
-  padding-top: 33px;
-  display:flex;
-  justify-content: space-between;
+  display: flex;
+
   width: 40%;
+  padding-top: 33px;
+
+  justify-content: space-between;
   align-items: center;
 }
 
 .tabNumbers {
+  font-family: "Bellefair";
+  font-size: clamp(
+    16px,
+    calc(1.5023474178403755vw + 10.366197183098592px),
+    32px
+  );
+  line-height: 17px;
+
   width: 40px;
   height: 40px;
-  padding: 11px 0px 0px 3px;
-  border-radius: 100px;
-  font-size: clamp(16px, calc(1.5023474178403755vw + 10.366197183098592px), 32px);
-  color: white;
-  text-decoration: none;
-  font-family: "Bellefair";
-  line-height: 17px;
-  letter-spacing: 2.3625px;
+  padding: 11px 0 0 3px;
+
   text-align: center;
+  text-decoration: none;
+  letter-spacing: 2.3625px;
+
+  color: white;
+  border-radius: 100px;
+}
+
+.mainTextTech {
+  width: 90%;
 }
 
 /*
@@ -363,61 +488,120 @@ hr {
 ######################################################################
 */
 @media only screen and (min-width: 768px) {
-#btn {
-display: none; 
+  /*
+######################################################################
+  00 Home Tablets
+######################################################################
+*/
+
+  #btn {
+    display: none;
+  }
+
+  .sidebar-nonSmall {
+    position: absolute;
+    z-index: 5;
+    right: 0;
+
+    box-sizing: border-box;
+    width: clamp(
+      250px,
+      calc(54.460093896713616vw + 45.774647887323965px),
+      830px
+    );
+    height: 96px;
+
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .sidebarChildContainer {
+    display: flex !important;
+    flex-direction: row;
+
+    box-sizing: border-box;
+
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #number0,
+  #number1,
+  #number2,
+  #number3 {
+    display: none;
+  }
+  .link-page:nth-child(1) {
+    margin: 0;
+  }
+
+  .link-page {
+    width: auto;
+    margin: 0;
+    padding: 35px 0;
+
+    text-align: center;
+    align-self: center;
+  }
+
+  .textBeforeTitle-home-tablet {
+    margin: 52px 0px 25px;
+  }
+
+  h1 {
+    font-size: clamp(
+      150px,
+      calc(1.488095238095238vw + 138.57142857142858px),
+      160px
+    );
+  }
+
+  h1 + p {
+    width: 445px;
+    padding: 32px 19.5% 0px 19.5%;
+  }
+
+  .explore {
+    width: 242px;
+    height: 242px;
+    margin-top: 9.3vh;
+  }
+  /*
+######################################################################
+  01 Destination Tablets
+######################################################################
+*/
+  .textBeforeTitle-123-tablet {
+    align-self: flex-start;
+    margin: -10px 0px 0px 40px;
+  }
+
+  .mainImgPlanet-tablet {
+    width: 300px;
+    height: 300px;
+    margin: 62px 0px 10px 0px;
+  }
+
+  .containerTabs-tablet {
+    width: 40%;
+    margin-top: 16px;
+  }
+
+  .main-title-destination-tablet {
+    padding-top: 30px;
+    padding-bottom: 10px;
+  }
+
+  .textAfterTitle-destination-tablet {
+    width: 570px;
+    padding: 40px 0px 30px 0px;
+  }
+
+  body > main > div:nth-child(8) {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+  }
 }
-
-.sidebar {
-  background: rgba(255,255,255,0.04);
-  box-sizing: border-box;
-  width: clamp(250px, calc(54.460093896713616vw + 45.774647887323965px), 830px);
-  height: 96px;
-  position: absolute;
-  right: 0;
-  z-index: 5;
-}
-
-.sidebarChildContainer {
-  box-sizing: border-box;
-  display:flex !important;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-
-#number0, #number1, #number2, #number3 {
-  display:none;
-}
-
-.link-page:nth-child(1) {
-  margin: 0px;
-}
-
-.link-page {  
-  width: auto;
-  text-align: center;
-  padding: 35px 0px;
-  align-self: center;
-  margin: 0px;
-}
-
-#textBeforeTitle {
-  margin: 60px 0px -20px 0px !important;
-}
-
-#textAfterTitle {
-  padding: 41px 19.5% 0px 19.5% !important;
-}
-
-.explore {
-  width: 242px;
-  height: 242px;
-  border-radius:100%;
-}
-
-}
-
-
 
 /*
 ######################################################################
@@ -425,7 +609,10 @@ display: none;
 ######################################################################
 */
 @media only screen and (min-width: 1200px) {
-  #number0, #number1, #number2, #number3 {
-    display:block;
+  #number0,
+  #number1,
+  #number2,
+  #number3 {
+    display: block;
   }
 }

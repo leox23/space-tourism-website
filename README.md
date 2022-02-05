@@ -6,7 +6,9 @@ El sitio web solo tiene un index.html, todo trabajado desde JSON y JavaScript...
 
 🔗[Live web aqui ⬅](https://leox23.github.io/space-tourism-website/)
 
-🚧 Vista Tablet en proceso - 50 % lista.
+🚧 Vista Desktop pendiente, y algunos detalles. 
+
+✅ Vista Tablet lista (x768min).
 
 ✅ Vista Móvil lista (x375min) (sin acabados VIP?) con mejoras en la estructura de todo el código.
 

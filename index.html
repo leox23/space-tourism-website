@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,18 +14,24 @@
   <link rel="stylesheet" href="styles.css">
   <title>Space tourism website</title>
 </head>
-<body onLoad="actualPage = '2'; extractJSON('data.json', (err, data) => {
+
+<body onLoad="actualPage = '0'; extractJSON('data.json', (err, data) => {
               console.log(data);
 });">
   <nav class="sidebar" id="sidebar">
     <div class="sidebarChildContainer">
-      <a href="#" onclick="actualPage = '0'; extractJSON('data.json', (err, data) => {});return false;" class="link-page"><span class="numbers" id="number0">00 </span>HOME</a>
-      <a href="#" onclick="actualPage = '1'; extractJSON('data.json', (err, data) => {});return false;" class="link-page"><span class="numbers" id="number1">01 </span>DESTINATION</a>
-      <a href="#" onclick="actualPage = '2'; extractJSON('data.json', (err, data) => {});return false;" class="link-page"><span class="numbers" id="number2">02 </span>CREW</a>
-      <a href="#" onclick="actualPage = '3'; extractJSON('data.json', (err, data) => {});return false;" class="link-page"><span class="numbers" id="number3">03 </span>TECHNOLOGY</a>
+      <a href="#" onclick="actualPage = '0'; extractJSON('data.json', (err, data) => {});return false;"
+        class="link-page"><span class="numbers" id="number0">00 </span>HOME</a>
+      <a href="#" onclick="actualPage = '1'; extractJSON('data.json', (err, data) => {});return false;"
+        class="link-page"><span class="numbers" id="number1">01 </span>DESTINATION</a>
+      <a href="#" onclick="actualPage = '2'; extractJSON('data.json', (err, data) => {});return false;"
+        class="link-page"><span class="numbers" id="number2">02 </span>CREW</a>
+      <a href="#" onclick="actualPage = '3'; extractJSON('data.json', (err, data) => {});return false;"
+        class="link-page"><span class="numbers" id="number3">03 </span>TECHNOLOGY</a>
     </div>
   </nav>
-  <img onClick="actualPage = '0'; extractJSON('data.json', (err, data) => {});" src="assets/shared/logo.svg" id="logo" alt="logo of webpage">
+  <img onClick="actualPage = '0'; extractJSON('data.json', (err, data) => {});" src="assets/shared/logo.svg" id="logo"
+    alt="logo of webpage">
   <img src="assets/shared/icon-hamburger.svg" class="btn" id="btn" alt="hamburger button">
   <main>
     <p id="textBeforeTitle"></p>
@@ -33,21 +40,21 @@
     <div id="containerTabs"></div>
     <p id="subTitle"></p>
     <h1 id="main-title"></h1>
-    <p id="textAfterTitle"></p> 
-    
+    <p id="textAfterTitle"></p>
+
     <div>
-    <div class="containerDescriptionDestinations">
-      <p class="descriptionData"></p>
-      <p class="dataDestination"></p>
-    </div>
-    <div class="containerDescriptionDestinations">
-      <p class="descriptionData"></p>
-      <p class="dataDestination"></p>
-    </div>
+      <div class="containerDescriptionDestinations">
+        <p class="descriptionData"></p>
+        <p class="dataDestination"></p>
+      </div>
+      <div class="containerDescriptionDestinations">
+        <p class="descriptionData"></p>
+        <p class="dataDestination"></p>
+      </div>
     </div>
     <div onClick="actualPage = '1'; extractJSON('data.json', (err, data) => {});" class="explore" style="display:none;">
       <p id="exploreText"></p>
-    </div> 
+    </div>
   </main>
   <script type="application/json" src="data.json"></script>
   <script src="script.js"></script>

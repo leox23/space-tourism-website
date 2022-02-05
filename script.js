@@ -179,16 +179,6 @@ function writePage(
 
   document.body.style.backgroundSize = `100%`;
 
-  //quitando bordes a las otros links del nav y colocandole efecto hover
-  document.querySelectorAll(".link-page").forEach((element) => {
-    element.style.borderBottom = "none";
-    element.classList.add("link-page-hover");
-  });
-  //agregando borde a la pagina actual
-  navActualPage = document.querySelectorAll(".link-page")[pageNumber];
-  navActualPage.style.borderBottom = "2px solid white";
-  navActualPage.classList.remove("link-page-hover");
-
   subHead = document.getElementById("textBeforeTitle");
 
   title = document.getElementById("main-title");
@@ -261,7 +251,7 @@ function writeTheRestOfThePage(
   containerTabs.classList.add("containerTabs");
   //containerTabs.style.display = "flex";
   textBeforeTitle = document.getElementById("textBeforeTitle");
-  textBeforeTitle.innerHTML = `<b>${pageSubHeadingNumber} </b>${subHeading}`;
+  textBeforeTitle.innerHTML = `<b id="numberPageId">${pageSubHeadingNumber}</b>${subHeading}`;
 
   //cambiando imagen
 
@@ -402,9 +392,10 @@ ${
         .getElementById("containerTabs")
         .classList.add("containerNumbesTech");
 
-      //borrando los bordes para colocar el correspondiente
+      //borrando los bordes en tabs planets para colocar el correspondiente y colocando hover
       document.querySelectorAll(".tabNumbers").forEach((element) => {
         element.style.border = "1px solid gray";
+        element.classList.add("tabNumber-page-hover");
       });
       //colocando borde a pestaña correspondiente
       actualTabNumber =
@@ -412,6 +403,7 @@ ${
       actualTabNumber.style.border = "1px solid white";
       actualTabNumber.style.background = "white";
       actualTabNumber.style.color = "black";
+      actualTabNumber.classList.remove("tabNumber-page-hover");
 
       //colocando titulo del crew
       beforeName = document.getElementById("subTitle");
@@ -437,14 +429,26 @@ function mediaQuery(page) {
   ];
   function test(mql) {
     if (!mqls[0].matches && !mqls[1].matches) {
-      //Moviles
+      /*
+######################################################################
+  moviles
+######################################################################
+*/
       console.log("SM");
       bodyBackground = `black url("assets/${page}/background-${page}-mobile.jpg") no-repeat`;
       document.body.style.background = bodyBackground;
 
+      //aparecer funcion sidebar
       document.getElementById("sidebar").classList.remove("sidebar-nonSmall");
+
+      //quitar bordes molestos de pantallas grandes en pantalla pequeña
+      document.querySelectorAll(".link-page")[pageNumber].style.border = "0px";
     } else if (mqls[0].matches) {
-      //Tablets
+      /*
+######################################################################
+  Tablets
+######################################################################
+*/
       console.log("MD");
       bodyBackground = `black url("assets/${page}/background-${page}-tablet.jpg") no-repeat`;
       document.body.style.background = bodyBackground;
@@ -452,14 +456,29 @@ function mediaQuery(page) {
       //para eliminar el sidebar y tenerlo como un nav normal
       document.getElementById("sidebar").classList.add("sidebar-nonSmall");
       //en caso de ser una pagina noHome
+      //el padding top de main
+      document
+        .getElementsByTagName("main")[0]
+        .classList.add("main-padingTop-noHome");
       document
         .getElementById("textBeforeTitle")
         .classList.add("textBeforeTitle-123-tablet");
+
+      //quitando bordes a las otros links del nav y colocandole efecto hover
+      document.querySelectorAll(".link-page").forEach((element) => {
+        element.style.borderBottom = "none";
+        element.classList.add("link-page-hover");
+      });
+      //agregando borde a la pagina actual
+      navActualPage = document.querySelectorAll(".link-page")[pageNumber];
+      navActualPage.style.borderBottom = "2px solid white";
+      navActualPage.classList.remove("link-page-hover");
+
       switch (page) {
         case "home":
-          document
-            .getElementById("textBeforeTitle")
-            .classList.remove("textBeforeTitle-123-tablet");
+          //por ser home
+          document.getElementsByTagName("main")[0].removeAttribute("class");
+          document.getElementById("textBeforeTitle").removeAttribute("class");
           document
             .getElementById("textBeforeTitle")
             .classList.add("textBeforeTitle-home-tablet");
@@ -485,6 +504,7 @@ function mediaQuery(page) {
           break;
 
         case "crew":
+          document.getElementsByTagName("main")[0].removeAttribute("class");
           document.querySelector("main").classList.add("main-crew-tablet");
           document
             .querySelector("#textBeforeTitle")
@@ -508,9 +528,6 @@ function mediaQuery(page) {
 
         case "technology":
           document
-            .querySelector("#textBeforeTitle")
-            .classList.add("textBeforeTitle-tech-tablet");
-          document
             .querySelector("#imgTechDiv")
             .classList.add("imgTechDiv-tech-tablet");
           document
@@ -529,7 +546,11 @@ function mediaQuery(page) {
           break;
       }
     } else if (mqls[1].matches) {
-      //Desktops
+      /*
+######################################################################
+  Desktops
+######################################################################
+*/
       console.log("LG");
       bodyBackground = `black url("assets/${page}/background-${page}-desktop.jpg") no-repeat`;
       document.body.style.background = bodyBackground;

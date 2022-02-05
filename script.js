@@ -537,15 +537,26 @@ function mediaQuery(page) {
 ######################################################################
   Desktops
 ######################################################################
-*/
-      console.log("LG");
+*/    console.log("LG");
+
       setBodyBackgorund(page, "desktop") 
+
       sidebarToNav()
 
-      
       document
         .getElementsByTagName("main")[0]
         .classList.add("main-home-desktop");
+        document
+        .querySelector("#textBeforeTitle")
+        .classList.add("textBeforeTitle-home-desktop");
+        document
+        .querySelector("#main-title")
+        .classList.add("main-title-home-desktop");
+        document
+        .querySelector("#textAfterTitle")
+        .classList.add("textAfterTitle-home-desktop");
+
+      
 
 
     }
@@ -562,10 +573,8 @@ bodyBackground = `black url("assets/${page}/background-${page}-${device}.jpg") n
 document.body.style.background = bodyBackground;
 }
 
-
-function sidebarToNav(){
-  
       //conviertiendo sidebar to nav (notSmall)
+function sidebarToNav(){
       document.getElementById("sidebar").classList.add("sidebar-nonSmall");
       //quitando bordes a las otros links del nav y colocandole efecto hover
       document.querySelectorAll(".link-page").forEach((element) => {

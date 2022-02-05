@@ -739,12 +739,23 @@ html body {
 ######################################################################
 */
 @media only screen and (min-width: 1200px) {
+  #logo {
+    width: 48px;
+    height: 48px;
+    margin: 44px 0px 0px 35px ;
+  }
+
   #number0,
   #number1,
   #number2,
   #number3 {
     display: inline;
   }
+
+.sidebar {
+  margin-top:40px;
+  padding-left: 66px;
+}
 .sidebarChildContainer {
   width: 830px;
 }
@@ -758,21 +769,48 @@ Todo queda pendiente aplicar la distribucion de contenido en home
   display: grid;
   height: 100%;
   margin-bottom: 0px;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   align-items: center;
   overflow-x: hidden;
   grid-template-areas:
-    "item1"
-    "item2"
-    "item3"
-    "item4"
-    "item5"
-    "item6";
+    "item1 none"
+    "item1 item4"
+    "item2 item4"
+    "item3 item4";
 }
 
+.textBeforeTitle-home-desktop {
+grid-area: item1;
+border-top:1px solid gray; 
 
+height: 65px;
+
+width: 337px;
+padding: 258px 142px 20px 5px;
+margin-left: 123px;
+margin-top: -54px;
+}
+
+.main-title-home-desktop {
+grid-area: item2;
+
+padding: 0px 0px 0px 107px;    
+margin-top: -76px;
+}
+
+.textAfterTitle-home-desktop {
+grid-area: item3;
+text-align: justify;
+padding: 0px;
+margin-top: -91px;
+margin-right: 0px;
+}
+
+.explore {
+  grid-area: item4;
+}
 
 
 

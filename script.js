@@ -427,34 +427,32 @@ function mediaQuery(page) {
     window.matchMedia("screen and (min-width: 768px) and (max-width: 991px"),
     window.matchMedia("screen and (min-width: 992px)"),
   ];
+
   function test(mql) {
-    if (!mqls[0].matches && !mqls[1].matches) {
-      /*
+    if (!mqls[0].matches && !mqls[1].matches) {/*
 ######################################################################
   moviles
 ######################################################################
 */
       console.log("SM");
-      bodyBackground = `black url("assets/${page}/background-${page}-mobile.jpg") no-repeat`;
-      document.body.style.background = bodyBackground;
+      setBodyBackgorund(page, "mobile")
 
       //aparecer funcion sidebar
       document.getElementById("sidebar").classList.remove("sidebar-nonSmall");
 
       //quitar bordes molestos de pantallas grandes en pantalla pequeña
       document.querySelectorAll(".link-page")[pageNumber].style.border = "0px";
-    } else if (mqls[0].matches) {
-      /*
+
+
+    } else if (mqls[0].matches) {/*
 ######################################################################
   Tablets
 ######################################################################
 */
       console.log("MD");
-      bodyBackground = `black url("assets/${page}/background-${page}-tablet.jpg") no-repeat`;
-      document.body.style.background = bodyBackground;
+      setBodyBackgorund(page, "tablet") 
+      sidebarToNav()
 
-      //para eliminar el sidebar y tenerlo como un nav normal
-      document.getElementById("sidebar").classList.add("sidebar-nonSmall");
       //en caso de ser una pagina noHome
       //el padding top de main
       document
@@ -463,16 +461,6 @@ function mediaQuery(page) {
       document
         .getElementById("textBeforeTitle")
         .classList.add("textBeforeTitle-123-tablet");
-
-      //quitando bordes a las otros links del nav y colocandole efecto hover
-      document.querySelectorAll(".link-page").forEach((element) => {
-        element.style.borderBottom = "none";
-        element.classList.add("link-page-hover");
-      });
-      //agregando borde a la pagina actual
-      navActualPage = document.querySelectorAll(".link-page")[pageNumber];
-      navActualPage.style.borderBottom = "2px solid white";
-      navActualPage.classList.remove("link-page-hover");
 
       switch (page) {
         case "home":
@@ -500,7 +488,6 @@ function mediaQuery(page) {
           document
             .querySelector(".textAfterTitle-destination")
             .classList.add("textAfterTitle-destination-tablet");
-
           break;
 
         case "crew":
@@ -545,20 +532,48 @@ function mediaQuery(page) {
 
           break;
       }
-    } else if (mqls[1].matches) {
-      /*
+
+    } else if (mqls[1].matches) {/*
 ######################################################################
   Desktops
 ######################################################################
 */
       console.log("LG");
-      bodyBackground = `black url("assets/${page}/background-${page}-desktop.jpg") no-repeat`;
-      document.body.style.background = bodyBackground;
+      setBodyBackgorund(page, "desktop") 
+      sidebarToNav()
+
+      
+      document
+        .getElementsByTagName("main")[0]
+        .classList.add("main-home-desktop");
+
+
     }
   }
-
   for (let i = 0; i < mqls.length; i++) {
     test(mqls[i]);
     mqls[i].addListener(test);
   }
+}
+
+//funcion para aplicar el fondo
+function setBodyBackgorund(page, device) {
+bodyBackground = `black url("assets/${page}/background-${page}-${device}.jpg") no-repeat`;
+document.body.style.background = bodyBackground;
+}
+
+
+function sidebarToNav(){
+  
+      //conviertiendo sidebar to nav (notSmall)
+      document.getElementById("sidebar").classList.add("sidebar-nonSmall");
+      //quitando bordes a las otros links del nav y colocandole efecto hover
+      document.querySelectorAll(".link-page").forEach((element) => {
+        element.style.borderBottom = "none";
+        element.classList.add("link-page-hover");
+      });
+      //agregando borde a la pagina actual
+      navActualPage = document.querySelectorAll(".link-page")[pageNumber];
+      navActualPage.style.borderBottom = "2px solid white";
+      navActualPage.classList.remove("link-page-hover");
 }

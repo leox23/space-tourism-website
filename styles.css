@@ -19,8 +19,6 @@ html body {
 *::before,
 *::after {
   /*border: 1px solid white;*/
-
-  box-sizing: content-box;
   overflow-x: hidden !important;
   box-sizing: inherit;
 }
@@ -37,6 +35,10 @@ html body {
 
   width: 40px;
   height: 40px;
+}
+
+#logo:hover, .explore:hover {
+  cursor:pointer;
 }
 
 /* -------------- Burger styling ----------------- */
@@ -741,6 +743,37 @@ html body {
   #number1,
   #number2,
   #number3 {
-    display: block;
+    display: inline;
   }
+.sidebarChildContainer {
+  width: 830px;
+}
+/*
+######################################################################
+  00 Home Desktop
+######################################################################
+Todo queda pendiente aplicar la distribucion de contenido en home
+*/
+.main-home-desktop {
+  display: grid;
+  height: 100%;
+  margin-bottom: 0px;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  overflow-x: hidden;
+  grid-template-areas:
+    "item1"
+    "item2"
+    "item3"
+    "item4"
+    "item5"
+    "item6";
+}
+
+
+
+
+
 }

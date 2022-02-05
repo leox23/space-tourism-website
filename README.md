@@ -2,12 +2,16 @@
 
 ## 🏗 👷🏻🚧In construction🚧
 
-El sitio web solo tiene un index.html, todo trabajado desde JSON y JavaScript... 
+El sitio web solo tiene un index.html, todo trabajado desde JSON y JavaScript... Todo vanilla (no sass transpiler, no frameworks de css ni de JavaScript )
 
 🔗[Live web aqui ⬅](https://leox23.github.io/space-tourism-website/)
 
-🚧 Vista tablet en proceso - 45 % lista.
+🚧 Vista Tablet en proceso - 50 % lista.
 
-✅ Vista movil lista (x375min) (sin acabados VIP?) con mejoras en la estructura de todo el codigo.
+✅ Vista Móvil lista (x375min) (sin acabados VIP?) con mejoras en la estructura de todo el código.
+
+Pendiente:
+
+🐞 Los bullets de la pagina 02 Crew no se estan dejando agregar clase para efecto Hover,
 
 ![Design preview for the Space tourism website coding challenge](./preview.jpg)

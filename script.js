@@ -17,7 +17,6 @@ document.getElementById("btn").addEventListener(
   },
   false
 );
-
 /*
 ######################################################################
                Reading JSON file
@@ -60,6 +59,7 @@ function extractJSON(tasksList, callbackFunc) {
         //writeHomePage(data.home[0], data.subHeadings[0].home);
         writePage(
           page,
+          pageNumber,
           actualPageLastChar,
           data.home[actualPageLastChar],
           data.subHeadings[0].home
@@ -67,6 +67,7 @@ function extractJSON(tasksList, callbackFunc) {
       } else if (pageNumber == 1) {
         writePage(
           page,
+          pageNumber,
           actualPageLastChar,
           data.destinations[actualPageLastChar],
           data.subHeadings[0].destination,
@@ -75,6 +76,7 @@ function extractJSON(tasksList, callbackFunc) {
       } else if (pageNumber == 2) {
         writePage(
           page,
+          pageNumber,
           actualPageLastChar,
           data.crew[actualPageLastChar],
           data.subHeadings[0].crew,
@@ -83,6 +85,7 @@ function extractJSON(tasksList, callbackFunc) {
       } else if (pageNumber == 3) {
         writePage(
           page,
+          pageNumber,
           actualPageLastChar,
           data.technology[actualPageLastChar],
           data.subHeadings[0].technology,
@@ -107,18 +110,14 @@ function sleep(time) {
 ######################################################################
 */
 function clearPage() {
-  //TODO tengo que especificar que se debe eliminar para cada pagina, y no estar eliminando a la brava
-  //colocar icono de hamburguesa en sidebar nuevamente para
-  //document.querySelector("#btn").classList.toggle("close-btn");
-  //para desaparecer la barra lateral
+  //para desaparecer la barra lateral en vista movil
   document.querySelector("#sidebar").classList.remove("sidebar-open");
   if (document.querySelector("#btn").classList.contains("close-btn")) {
     document.querySelector("#btn").classList.toggle("close-btn");
   }
-
-  //de la primera pagin
+  //de la primera pagina
   document.querySelector(".explore").style.display = "none";
-
+  //imagen de 03
   document.getElementById("imgTechDiv").style.display = "none";
 
   //cambiar el boton X
@@ -155,6 +154,7 @@ function clearPage() {
   document.getElementById("textAfterTitle").removeAttribute("class");
   document.getElementById("subTitle").removeAttribute("class");
   document.getElementById("subTitle").textContent = "";
+  document.querySelector("main").removeAttribute("class");
 
   //cambiando estilos del texto del titulo
   document.getElementById("main-title").removeAttribute("class");
@@ -167,6 +167,7 @@ function clearPage() {
 */
 function writePage(
   page,
+  pageNumber,
   actualPageLastChar,
   pageContent,
   subHeading,
@@ -177,7 +178,16 @@ function writePage(
   document.body.style.background = bodyBackground;
 
   document.body.style.backgroundSize = `100%`;
-  document.body.style.paddingBottom = "30px";
+
+  //quitando bordes a las otros links del nav y colocandole efecto hover
+  document.querySelectorAll(".link-page").forEach((element) => {
+    element.style.borderBottom = "none";
+    element.classList.add("link-page-hover");
+  });
+  //agregando borde a la pagina actual
+  navActualPage = document.querySelectorAll(".link-page")[pageNumber];
+  navActualPage.style.borderBottom = "2px solid white";
+  navActualPage.classList.remove("link-page-hover");
 
   subHead = document.getElementById("textBeforeTitle");
 
@@ -326,21 +336,22 @@ ${
       dataPlanet.textContent = pageContent.travel;
       document.getElementById("containerTabs").classList.add("containerTabs");
 
-      //borrando los bordes para colocar el correspondiente
+      //borrando los bordes en tabs planets para colocar el correspondiente y colocando hover
       document.querySelectorAll(".destinationTab").forEach((element) => {
         element.style.borderBottom = "none";
+        element.classList.add("link-page-hover");
       });
       //colocando borde a pestaña correspondiente
       actualtab =
         document.getElementsByClassName("destinationTab")[actualPageLastChar];
       actualtab.style.borderBottom = "2px solid white";
-      /*
-!falta solucionar el caso de la linea horizontal en la pagina destinations
-let pbase = document.querySelector("#textAfterTitle");
-let lineHr = document.createElement("hr");
-pbase.after(hr);
+      navActualPage.classList.remove("link-page-hover");
 
-*/
+      //agregando borde a la pagina actual
+      navActualPage = document.querySelectorAll(".link-page")[pageNumber];
+      navActualPage.style.borderBottom = "2px solid white";
+      navActualPage.classList.remove("link-page-hover");
+
       break;
     /*
 ######################################################################
@@ -431,7 +442,7 @@ function mediaQuery(page) {
       bodyBackground = `black url("assets/${page}/background-${page}-mobile.jpg") no-repeat`;
       document.body.style.background = bodyBackground;
 
-      document.getElementById("sidebar").classList.remove(".sidebar-nonSmall");
+      document.getElementById("sidebar").classList.remove("sidebar-nonSmall");
     } else if (mqls[0].matches) {
       //Tablets
       console.log("MD");
@@ -474,9 +485,47 @@ function mediaQuery(page) {
           break;
 
         case "crew":
+          document.querySelector("main").classList.add("main-crew-tablet");
+          document
+            .querySelector("#textBeforeTitle")
+            .classList.add("subHeading-gridItem");
+          document
+            .querySelector("#subTitle")
+            .classList.add("subTitle-gridItem");
+          document
+            .querySelector("#main-title")
+            .classList.add("nameCrew-gridItem");
+          document
+            .querySelector("#textAfterTitle")
+            .classList.add("textAfterTitleCrew-gridItem");
+          document
+            .querySelector("#containerTabs")
+            .classList.add("containerTabsCrew-gridItem");
+          document
+            .querySelector("#mainImg")
+            .classList.add("mainImgCrew-gridItem");
           break;
 
         case "technology":
+          document
+            .querySelector("#textBeforeTitle")
+            .classList.add("textBeforeTitle-tech-tablet");
+          document
+            .querySelector("#imgTechDiv")
+            .classList.add("imgTechDiv-tech-tablet");
+          document
+            .querySelector("#containerTabs")
+            .classList.add("containerTabs-tech-tablet");
+          document
+            .querySelector("#subTitle")
+            .classList.add("subTitle-tech-tablet");
+          document
+            .querySelector("#main-title")
+            .classList.add("main-title-tech-tablet");
+          document
+            .querySelector("#textAfterTitle")
+            .classList.add("textAfterTitle-tech-tablet");
+
           break;
       }
     } else if (mqls[1].matches) {

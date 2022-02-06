@@ -515,6 +515,12 @@ html body {
 ######################################################################
 */
 @media only screen and (min-width: 768px) {
+
+#logo {
+  width: 48px;
+  height: 48px;
+  margin: 0px 0px 0px 14px
+}
   /*
 ######################################################################
   00 Home Tablets
@@ -740,8 +746,6 @@ html body {
 */
 @media only screen and (min-width: 1200px) {
   #logo {
-    width: 48px;
-    height: 48px;
     margin: 44px 0px 0px 35px ;
   }
 
@@ -766,50 +770,53 @@ html body {
 Todo queda pendiente aplicar la distribucion de contenido en home
 */
 .main-home-desktop {
+  gap: 100px;
+  padding: 88px 169px 0px 169px;
   display: grid;
   height: 100%;
   margin-bottom: 0px;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: .5fr repeat(3, 1fr);
   grid-template-columns: 1fr 1fr;
-  justify-items: center;
+  justify-items: flex-start;
   align-items: center;
   overflow-x: hidden;
   grid-template-areas:
-    "item1 none"
-    "item1 item4"
-    "item2 item4"
-    "item3 item4";
+      "none none"
+      "item1 item4"
+      "item2 item4"
+      "item3 item4";
+  z-index: -3 !important;
 }
 
 .textBeforeTitle-home-desktop {
 grid-area: item1;
+place-self: center center;
 border-top:1px solid gray; 
-
 height: 65px;
-
-width: 337px;
-padding: 258px 142px 20px 5px;
-margin-left: 123px;
-margin-top: -54px;
+width: 30vw;
+padding: 0px 4vw 0px 0px;
+margin-top: 0px;
 }
 
 .main-title-home-desktop {
 grid-area: item2;
-
-padding: 0px 0px 0px 107px;    
-margin-top: -76px;
+margin-top: -126px;
+padding: 0px;
 }
 
 .textAfterTitle-home-desktop {
 grid-area: item3;
 text-align: justify;
 padding: 0px;
-margin-top: -91px;
-margin-right: 0px;
+margin: -209px 0px 0px 0px;
+line-height: 32px;
 }
 
 .explore {
   grid-area: item4;
+  width: 274px;
+  height: 274px;
+  margin: 0px 10% 0px 37%;
 }
 
 

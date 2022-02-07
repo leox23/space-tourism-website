@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap");
 
+
+
 html body {
   overflow-x: hidden !important;
 
@@ -306,14 +308,8 @@ p {
   border-bottom: 1px solid gray;
 }
 
-hr {
-  z-index: -1;
-
-  width: 80%;
-  height: 1px;
-  margin: 23px 0 20px 0;
-
-  opacity: 0.5;
+body > main > div:nth-child(8) {
+  justify-content: space-between !important;
 }
 
 .containerDescriptionDestinations {
@@ -480,11 +476,7 @@ html body {
 
 .tabNumbers {
   font-family: "Bellefair";
-  font-size: clamp(
-    16px,
-    calc(1.5023474178403755vw + 10.366197183098592px),
-    32px
-  );
+  font-size: var(--title-heigth-desktop);
   line-height: 40px;
   width: 40px;
   height: 40px;
@@ -519,8 +511,15 @@ html body {
 #logo {
   width: 48px;
   height: 48px;
-  margin: 0px 0px 0px 14px
+  margin: 0px 0px 0px 14px;
+  position: relative;
 }
+
+#sidebar {
+  position: absolute;
+}
+
+
   /*
 ######################################################################
   00 Home Tablets
@@ -608,6 +607,8 @@ html body {
     padding-top: 50px;
   }
 
+
+
   .crewSubHeading,
   .textBeforeTitle-destination,
   .subHeadTech,
@@ -617,6 +618,9 @@ html body {
     width: 300px;
   }
 
+  .textBeforeTitle-destination {
+    width: 350px;
+  }
   .mainImgPlanet-tablet {
     width: 300px;
     height: 300px;
@@ -745,8 +749,13 @@ html body {
 ######################################################################
 */
 @media only screen and (min-width: 1200px) {
+:root {
+  --title-heigth-desktop:clamp(56px,calc(4.131455399061033vw + 40.50704225352113px),120px);
+}
+
   #logo {
-    margin: 44px 0px 0px 35px ;
+    display: relative !important;
+    margin: 44px 0px 0px 35px;
   }
 
   #number0,
@@ -759,66 +768,147 @@ html body {
 .sidebar {
   margin-top:40px;
   padding-left: 66px;
-}
-.sidebarChildContainer {
+  
   width: 830px;
+  display:initial;
+  right: 0px;
+  
 }
+
+main {
+  padding-top: 0px;
+}
+
 /*
 ######################################################################
   00 Home Desktop
 ######################################################################
 Todo queda pendiente aplicar la distribucion de contenido en home
 */
+
 .main-home-desktop {
-  gap: 100px;
+  gap: 24px 100px;
   padding: 88px 169px 0px 169px;
   display: grid;
-  height: 100%;
+  height: auto; /*calc(100vh - 88px);*/
   margin-bottom: 0px;
-  grid-template-rows: .5fr repeat(3, 1fr);
+  grid-template-rows: .5fr .7fr 160px 1fr;
   grid-template-columns: 1fr 1fr;
   justify-items: flex-start;
   align-items: center;
-  overflow-x: hidden;
   grid-template-areas:
-      "none none"
-      "item1 item4"
-      "item2 item4"
-      "item3 item4";
+      "none         none"
+      "subHead   button"
+      "title        button"
+      "content      button";
   z-index: -3 !important;
 }
 
+
 .textBeforeTitle-home-desktop {
-grid-area: item1;
-place-self: center center;
-border-top:1px solid gray; 
-height: 65px;
-width: 30vw;
-padding: 0px 4vw 0px 0px;
+grid-area: subHead;
+place-self: flex-end flex-start;
+height: auto;
+margin: 0px;
 margin-top: 0px;
 }
 
 .main-title-home-desktop {
-grid-area: item2;
-margin-top: -126px;
+grid-area: title;
+place-self: center flex-start;
+margin: 0px;
 padding: 0px;
 }
 
 .textAfterTitle-home-desktop {
-grid-area: item3;
+grid-area: content;
+place-self: flex-start flex-start;
 text-align: justify;
 padding: 0px;
-margin: -209px 0px 0px 0px;
+margin: 0px;
 line-height: 32px;
 }
 
 .explore {
-  grid-area: item4;
+  grid-area: button;
   width: 274px;
   height: 274px;
   margin: 0px 10% 0px 37%;
 }
 
+/*
+######################################################################
+  01 Destinations Desktop
+######################################################################
+*/
+
+.main-destination-desktop {
+  gap: 24px 100px;
+  padding: 0px 169px 0px 14vw;
+  display: grid;
+  grid-template-rows: 1fr .2fr 0fr 95px 93px auto 1fr;
+  /*height:initial;/*calc(100vh - 88px);*/
+  margin-bottom: 0px;
+  grid-template-columns: 1.3fr 1fr;
+  place-items: flex-start  flex-start;
+  overflow-x: hidden;
+  overflow-y: visible;
+  grid-template-areas:
+      ". ."
+      "subHead    none"
+      ".          ."
+      "imgPlanet  tabs"
+      "imgPlanet  title"
+      "imgPlanet  content"
+      "imgPlanet  data";
+  z-index: -3 !important;
+}
+
+.textBeforeTitle-destination-desktop {
+grid-area: subHead;
+width: 350px;
+margin: 0px 0px 0px 0px;
+place-self:flex-start flex-start;
+}
+
+.mainImg-destination-desktop-desktop {
+grid-area: imgPlanet;
+width: clamp(350px, calc(25rem + ((1vw - 12px) * 18.75)), 445px);
+height: clamp(350px, calc(25rem + ((1vw - 12px) * 18.75)), 445px);
+margin:0px;
+margin-left: clamp(-15px, calc(0.9375rem + ((1vw - 12px) * 14.15)), 48.96px);
+}
+
+.containerTabs-destination-desktop {
+grid-area: tabs;
+width: 280px;
+
+}
+
+.main-title-destination-desktop {
+grid-area: title;
+padding-bottom:0px;
+
+}
+
+.textAfterTitle-destination-desktop {
+grid-area: content;
+padding:0px;
+width: 440px;
+text-align: left;
+margin:0px;
+text-justify:initial;
+line-height: 31px;
+padding-bottom: 50px;
+}
+
+.planetDataContainer-destination-desktop {
+grid-area: data;
+justify-content: space-between;
+width: 85% !important;
+padding-bottom:30px ;
+
+}
 
 
 }

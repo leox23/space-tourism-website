@@ -103,6 +103,9 @@ function extractJSON(tasksList, callbackFunc) {
 function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
+/*
+!queda pendiente colocarle borde al boton tech en sidebar que no lo tiene
+*/
 
 /*
 ######################################################################
@@ -115,6 +118,8 @@ function clearPage() {
   if (document.querySelector("#btn").classList.contains("close-btn")) {
     document.querySelector("#btn").classList.toggle("close-btn");
   }
+
+  document.getElementsByTagName("main")[0].removeAttribute("class");
   //de la primera pagina
   document.querySelector(".explore").style.display = "none";
   //imagen de 03
@@ -128,6 +133,8 @@ function clearPage() {
   document.getElementById("mainImg").removeAttribute("class");
   document.getElementById("mainImg").removeAttribute("src");
 
+  document.querySelector("body > main > div:nth-child(8)").removeAttribute("class");
+
   //desapareciedo contenedor pestañas y eliminando elementos internos
   allTabs = document.querySelectorAll(".crewBullets");
   allTabs.forEach((element) => {
@@ -135,13 +142,15 @@ function clearPage() {
   });
 
   document.querySelector("#textBeforeTitle").removeAttribute("class");
+  document.querySelector("#main-title").removeAttribute("class");
   document.querySelector("#textAfterTitle").removeAttribute("class");
-
   //por pag 01 02 y 03
   document.getElementById("containerTabs").removeAttribute("class");
   document.getElementById("containerTabs").removeAttribute("style");
   document.getElementById("containerTabs").textContent = "";
+  document.getElementById("containerTabs").style.display = "none";
 
+  document.querySelector("body > main > div:nth-child(8)").style.display = "none"
   //borrando detalles de planetas
   document.getElementsByClassName(
     "containerDescriptionDestinations"
@@ -173,7 +182,7 @@ function writePage(
   subHeading,
   allContentPage
 ) {
-  clearPage();
+  clearPage()
   bodyBackground = `black url("assets/${page}/background-${page}-mobile.jpg") no-repeat`;
   document.body.style.background = bodyBackground;
 
@@ -207,6 +216,10 @@ function writePage(
       title.classList.add("main-title-destination");
       mainText.textContent = pageContent.description;
       mainText.classList.add("textAfterTitle-destination");
+      
+  document.getElementById("containerTabs").style.display = "flex";
+
+  document.querySelector("body > main > div:nth-child(8)").style.display = "flex"
       break;
     case "crew":
       subHead.classList.add("crewSubHeading");
@@ -335,10 +348,11 @@ ${
       actualtab =
         document.getElementsByClassName("destinationTab")[actualPageLastChar];
       actualtab.style.borderBottom = "2px solid white";
+      
+      navActualPage = document.querySelectorAll(".link-page")[pageNumber];
       navActualPage.classList.remove("link-page-hover");
 
       //agregando borde a la pagina actual
-      navActualPage = document.querySelectorAll(".link-page")[pageNumber];
       navActualPage.style.borderBottom = "2px solid white";
       navActualPage.classList.remove("link-page-hover");
 
@@ -539,13 +553,19 @@ function mediaQuery(page) {
 ######################################################################
 */    console.log("LG");
 
-      setBodyBackgorund(page, "desktop") 
-
       sidebarToNav()
 
+
+/*
+######################################################################
+  00 Home Desktop
+######################################################################
+*/switch (page) {
+    case "home":
       document
         .getElementsByTagName("main")[0]
         .classList.add("main-home-desktop");
+      setBodyBackgorund(page, "desktop") 
         document
         .querySelector("#textBeforeTitle")
         .classList.add("textBeforeTitle-home-desktop");
@@ -555,10 +575,47 @@ function mediaQuery(page) {
         document
         .querySelector("#textAfterTitle")
         .classList.add("textAfterTitle-home-desktop");
+        break
+/*
+######################################################################
+  01 Destinations
+######################################################################
+*/  case "destination":
+        document
+        .getElementsByTagName("main")[0]
+        .classList.add("main-destination-desktop");
+        document
+        .querySelector("#textBeforeTitle")
+        .classList.add("textBeforeTitle-destination-desktop");
+        document
+        .querySelector("#mainImg")
+        .classList.add("mainImg-destination-desktop-desktop");
+        document
+        .querySelector("#containerTabs")
+        .classList.add("containerTabs-destination-desktop");
+        document
+        .querySelector("#main-title")
+        .classList.add("main-title-destination-desktop");  
+        document
+        .querySelector("#textAfterTitle")
+        .classList.add("textAfterTitle-destination-desktop");
+    
+    document.querySelector("body > main > div:nth-child(8)")
+    .classList.add("planetDataContainer-destination-desktop");
 
-      
+      break
+    case "crew":
+
+      break
+    case "technology":
+
+      break
 
 
+
+
+
+}
     }
   }
   for (let i = 0; i < mqls.length; i++) {

@@ -788,14 +788,13 @@ Todo queda pendiente aplicar la distribucion de contenido en home
 
 .main-home-desktop {
   gap: 24px 100px;
-  padding: 88px 169px 0px 169px;
+  padding: 0px 169px 0px 169px;
   display: grid;
   height: auto; /*calc(100vh - 88px);*/
   margin-bottom: 0px;
   grid-template-rows: .5fr .7fr 160px 1fr;
   grid-template-columns: 1fr 1fr;
-  justify-items: flex-start;
-  align-items: center;
+  place-items:center flex-start;
   grid-template-areas:
       "none         none"
       "subHead   button"
@@ -807,8 +806,9 @@ Todo queda pendiente aplicar la distribucion de contenido en home
 
 .textBeforeTitle-home-desktop {
 grid-area: subHead;
-place-self: flex-end flex-start;
+place-self:  center flex-start;
 height: auto;
+width: 100%;
 margin: 0px;
 margin-top: 0px;
 }
@@ -866,7 +866,7 @@ line-height: 32px;
 
 .textBeforeTitle-destination-desktop {
 grid-area: subHead;
-width: 350px;
+width: 100%;
 margin: 0px 0px 0px 0px;
 place-self:flex-start flex-start;
 }
@@ -909,6 +909,81 @@ width: 85% !important;
 padding-bottom:30px ;
 
 }
+/*
+######################################################################
+  02 Crew Desktop
+######################################################################
+*/
+
+.main-crew-desktop {
+  gap: 24px 130px;
+  padding: 0px 169px 0px 12vw;
+  display: grid;
+  grid-template-rows: 1.01fr 1fr 1.5fr auto 120px 1fr;
+  /*height:initial;/*calc(100vh - 88px);*/
+  margin-bottom: 0px;
+  grid-template-columns: 1.3fr 1fr;
+  place-items: flex-start  flex-start;
+  overflow-y: visible;
+  grid-template-areas:
+      ".                .      "
+      "subHead          imgCrew"
+      "professionCrew   imgCrew"
+      "nameCrew         imgCrew"
+      "contentCrew      imgCrew"
+      "bullets          imgCrew";
+  z-index: -3 !important;
+}
+
+.textBeforeTitle-crew-desktop {
+  grid-area: subHead;
+  
+  /*margin-top: 156px;*/
+  margin-top: 0px;
+  margin-left: 0px;
+  width: 100%;
+}
+
+.mainImg-crew-desktop- {
+grid-area: imgCrew;
+width: auto;
+height: auto;
+max-height:640px;
+}
+
+
+.subTitle-crew-desktop {
+  grid-area: professionCrew;
+  place-self: flex-end flex-start;
+}
+
+.main-title-crew-desktop {
+grid-area: nameCrew;
+overflow-x: hidden;
+width: 100%;
+}
+
+.textAfterTitle-crew-desktop {
+grid-area: contentCrew;
+padding:0px;
+margin: 0px;
+width: 440px;
+text-justify: auto;
+text-align: left;
+}
+
+.containerTabs-crew-desktop {
+  grid-area: bullets;
+  width: 23%;
+  margin: 0px;
+  padding: 20px 0px;
+  border: 0px;
+  display: flex !important;
+  text-align: left;
+}
+
+
+
 
 
 }

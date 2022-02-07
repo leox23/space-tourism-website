@@ -133,6 +133,7 @@ function clearPage() {
   document.getElementById("mainImg").removeAttribute("class");
   document.getElementById("mainImg").removeAttribute("src");
 
+  document.querySelector("body > main > div:nth-child(8)").style.display = "none"
   document.querySelector("body > main > div:nth-child(8)").removeAttribute("class");
 
   //desapareciedo contenedor pestañas y eliminando elementos internos
@@ -150,7 +151,7 @@ function clearPage() {
   document.getElementById("containerTabs").textContent = "";
   document.getElementById("containerTabs").style.display = "none";
 
-  document.querySelector("body > main > div:nth-child(8)").style.display = "none"
+
   //borrando detalles de planetas
   document.getElementsByClassName(
     "containerDescriptionDestinations"
@@ -218,9 +219,9 @@ function writePage(
       mainText.classList.add("textAfterTitle-destination");
       
   document.getElementById("containerTabs").style.display = "flex";
-
   document.querySelector("body > main > div:nth-child(8)").style.display = "flex"
       break;
+
     case "crew":
       subHead.classList.add("crewSubHeading");
       title.classList.add("crewName");
@@ -229,8 +230,8 @@ function writePage(
     case "technology":
       title.classList.add("crewName");
       mainText.textContent = pageContent.bio;
-
       break;
+
   }
   if (page != "home") {
     writeTheRestOfThePage(
@@ -554,14 +555,13 @@ function mediaQuery(page) {
 */    console.log("LG");
 
       sidebarToNav()
-
-
 /*
 ######################################################################
   00 Home Desktop
 ######################################################################
 */switch (page) {
     case "home":
+      document.getElementsByTagName("main")[0].removeAttribute("class");
       document
         .getElementsByTagName("main")[0]
         .classList.add("main-home-desktop");
@@ -575,6 +575,7 @@ function mediaQuery(page) {
         document
         .querySelector("#textAfterTitle")
         .classList.add("textAfterTitle-home-desktop");
+        
         break
 /*
 ######################################################################
@@ -605,15 +606,33 @@ function mediaQuery(page) {
 
       break
     case "crew":
+      
+      document
+      .getElementsByTagName("main")[0]
+      .classList.add("main-crew-desktop");
+      document
+      .querySelector("#textBeforeTitle")
+      .classList.add("textBeforeTitle-crew-desktop");
+      document
+      .querySelector("#mainImg")
+      .classList.add("mainImg-crew-desktop-");
+      document
+      .querySelector("#containerTabs")
+      .classList.add("containerTabs-crew-desktop");
+      document
+      .querySelector("#subTitle")
+      .classList.add("subTitle-crew-desktop");  
+      document
+      .querySelector("#main-title")
+      .classList.add("main-title-crew-desktop");  
+      document
+      .querySelector("#textAfterTitle")
+      .classList.add("textAfterTitle-crew-desktop");
 
       break
     case "technology":
 
       break
-
-
-
-
 
 }
     }

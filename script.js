@@ -244,7 +244,7 @@ function writePage(
   }
 
   //media query adjustments
-  mediaQuery(page);
+  mediaQuery(page,pageContent);
 }
 
 /*
@@ -305,6 +305,8 @@ ${
     : ""
 }
 `;
+//mostrando pestañas/bullets/navegacion
+document.getElementById("containerTabs").style.display = "flex";
 
   switch (page) {
     /*
@@ -437,7 +439,7 @@ ${
     Los media querys
 ######################################################################
 */
-function mediaQuery(page) {
+function mediaQuery(page,pageContent) {
   let mqls = [
     window.matchMedia("screen and (min-width: 768px) and (max-width: 991px"),
     window.matchMedia("screen and (min-width: 992px)"),
@@ -450,6 +452,7 @@ function mediaQuery(page) {
 ######################################################################
 */
       console.log("SM");
+      
       setBodyBackgorund(page, "mobile")
 
       //aparecer funcion sidebar
@@ -606,7 +609,6 @@ function mediaQuery(page) {
 
       break
     case "crew":
-      
       document
       .getElementsByTagName("main")[0]
       .classList.add("main-crew-desktop");
@@ -615,7 +617,7 @@ function mediaQuery(page) {
       .classList.add("textBeforeTitle-crew-desktop");
       document
       .querySelector("#mainImg")
-      .classList.add("mainImg-crew-desktop-");
+      .classList.add("mainImg-crew-desktop");
       document
       .querySelector("#containerTabs")
       .classList.add("containerTabs-crew-desktop");
@@ -628,10 +630,34 @@ function mediaQuery(page) {
       document
       .querySelector("#textAfterTitle")
       .classList.add("textAfterTitle-crew-desktop");
-
       break
-    case "technology":
 
+    case "technology":
+    
+      document.getElementById("imgTechDiv").style.background = `url("${pageContent.images.portrait}")`;
+
+    
+      document
+      .getElementsByTagName("main")[0]
+      .classList.add("main-technology-desktop");
+      document
+      .querySelector("#textBeforeTitle")
+      .classList.add("textBeforeTitle-technology-desktop");
+      document
+      .querySelector("#imgTechDiv")
+      .classList.add("imgTechDiv-technology-desktop");
+      document
+      .querySelector("#containerTabs")
+      .classList.add("containerTabs-technology-desktop");
+      document
+      .querySelector("#subTitle")
+      .classList.add("subTitle-technology-desktop");  
+      document
+      .querySelector("#main-title")
+      .classList.add("main-title-technology-desktop");  
+      document
+      .querySelector("#textAfterTitle")
+      .classList.add("textAfterTitle-technology-desktop");
       break
 
 }

@@ -244,7 +244,7 @@ function writePage(
   }
 
   //media query adjustments
-  mediaQuery(page,pageContent);
+  mediaQuery(page, pageContent, pageNumber);
 }
 
 /*
@@ -305,6 +305,7 @@ ${
     : ""
 }
 `;
+
 //mostrando pestañas/bullets/navegacion
 document.getElementById("containerTabs").style.display = "flex";
 
@@ -345,17 +346,19 @@ document.getElementById("containerTabs").style.display = "flex";
       //borrando los bordes en tabs planets para colocar el correspondiente y colocando hover
       document.querySelectorAll(".destinationTab").forEach((element) => {
         element.style.borderBottom = "none";
+        element.style.cssText = "text-shadow:none;"
         element.classList.add("link-page-hover");
       });
       //colocando borde a pestaña correspondiente
       actualtab =
         document.getElementsByClassName("destinationTab")[actualPageLastChar];
       actualtab.style.borderBottom = "2px solid white";
+      actualtab.style.cssText = "text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.6);"
       
       navActualPage = document.querySelectorAll(".link-page")[pageNumber];
       navActualPage.classList.remove("link-page-hover");
 
-      //agregando borde a la pagina actual
+      //agregando borde a la pagina actual nav actual
       navActualPage.style.borderBottom = "2px solid white";
       navActualPage.classList.remove("link-page-hover");
 
@@ -439,11 +442,22 @@ document.getElementById("containerTabs").style.display = "flex";
     Los media querys
 ######################################################################
 */
-function mediaQuery(page,pageContent) {
+function mediaQuery(page, pageContent, pageNumber) {
   let mqls = [
     window.matchMedia("screen and (min-width: 768px) and (max-width: 991px"),
     window.matchMedia("screen and (min-width: 992px)"),
   ];
+
+  document.querySelectorAll(".link-page").forEach((element) => {
+    element.style.cssText = `
+    text-shadow:none;
+    `
+  });
+  document.getElementsByClassName("link-page")[pageNumber].style.cssText = `
+  text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.6);
+  `
+
+  console.log(pageNumber)
 
   function test(mql) {
     if (!mqls[0].matches && !mqls[1].matches) {/*

@@ -2,11 +2,11 @@
 
 🔗[Live web aqui 🌟🌠   ⬅](https://leox23.github.io/space-tourism-website/)
 
-✅ Vista Desktop lista (1200-1440px  900px).
+✅ Vista Desktop (1200-1440px  900px).
 
-✅ Vista Tablet lista (765-1199px  1024px)
+✅ Vista Tablet (765-1199px  1024px)
 
-✅ Vista Móvil lista (375px  650px~) 
+✅ Vista Móvil (375px  650px~) 
 
 ## Info adicional:
 

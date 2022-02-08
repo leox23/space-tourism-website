@@ -55,8 +55,6 @@ function extractJSON(tasksList, callbackFunc) {
           break;
       }
       if (pageNumber == 0) {
-        //esto es para la pagina home
-        //writeHomePage(data.home[0], data.subHeadings[0].home);
         writePage(
           page,
           pageNumber,
@@ -100,13 +98,6 @@ function extractJSON(tasksList, callbackFunc) {
   request.send();
 }
 
-function sleep(time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
-}
-/*
-!queda pendiente colocarle borde al boton tech en sidebar que no lo tiene
-*/
-
 /*
 ######################################################################
     Hidding and Clear page  Functions
@@ -133,8 +124,11 @@ function clearPage() {
   document.getElementById("mainImg").removeAttribute("class");
   document.getElementById("mainImg").removeAttribute("src");
 
-  document.querySelector("body > main > div:nth-child(8)").style.display = "none"
-  document.querySelector("body > main > div:nth-child(8)").removeAttribute("class");
+  document.querySelector("body > main > div:nth-child(8)").style.display =
+    "none";
+  document
+    .querySelector("body > main > div:nth-child(8)")
+    .removeAttribute("class");
 
   //desapareciedo contenedor pestañas y eliminando elementos internos
   allTabs = document.querySelectorAll(".crewBullets");
@@ -150,7 +144,6 @@ function clearPage() {
   document.getElementById("containerTabs").removeAttribute("style");
   document.getElementById("containerTabs").textContent = "";
   document.getElementById("containerTabs").style.display = "none";
-
 
   //borrando detalles de planetas
   document.getElementsByClassName(
@@ -183,10 +176,7 @@ function writePage(
   subHeading,
   allContentPage
 ) {
-  clearPage()
-  bodyBackground = `black url("assets/${page}/background-${page}-mobile.jpg") no-repeat`;
-  document.body.style.background = bodyBackground;
-
+  clearPage();
   document.body.style.backgroundSize = `100%`;
 
   subHead = document.getElementById("textBeforeTitle");
@@ -213,13 +203,14 @@ function writePage(
       //showing
       boxButton = document.querySelector(".explore").style.display = "flex";
       break;
+
     case "destination":
       title.classList.add("main-title-destination");
       mainText.textContent = pageContent.description;
       mainText.classList.add("textAfterTitle-destination");
-      
-  document.getElementById("containerTabs").style.display = "flex";
-  document.querySelector("body > main > div:nth-child(8)").style.display = "flex"
+      document.getElementById("containerTabs").style.display = "flex";
+      document.querySelector("body > main > div:nth-child(8)").style.display =
+        "flex";
       break;
 
     case "crew":
@@ -227,12 +218,13 @@ function writePage(
       title.classList.add("crewName");
       mainText.textContent = pageContent.bio;
       break;
+
     case "technology":
       title.classList.add("crewName");
       mainText.textContent = pageContent.bio;
       break;
-
   }
+
   if (page != "home") {
     writeTheRestOfThePage(
       page,
@@ -263,12 +255,10 @@ function writeTheRestOfThePage(
   document.getElementById("mainImg").style.display = "inherit ";
   containerTabs = document.getElementById("containerTabs");
   containerTabs.classList.add("containerTabs");
-  //containerTabs.style.display = "flex";
   textBeforeTitle = document.getElementById("textBeforeTitle");
   textBeforeTitle.innerHTML = `<b id="numberPageId">${pageSubHeadingNumber}</b>${subHeading}`;
 
   //cambiando imagen
-
   if (page != "technology") {
     document.getElementById("mainImg").src = pageContent.images.webp;
   }
@@ -306,8 +296,8 @@ ${
 }
 `;
 
-//mostrando pestañas/bullets/navegacion
-document.getElementById("containerTabs").style.display = "flex";
+  //mostrando pestañas/bullets/navegacion
+  document.getElementById("containerTabs").style.display = "flex";
 
   switch (page) {
     /*
@@ -346,18 +336,18 @@ document.getElementById("containerTabs").style.display = "flex";
       //borrando los bordes en tabs planets para colocar el correspondiente y colocando hover
       document.querySelectorAll(".destinationTab").forEach((element) => {
         element.style.borderBottom = "none";
-        element.style.cssText = "text-shadow:none;"
+        element.style.cssText = "text-shadow:none;";
         element.classList.add("link-page-hover");
       });
       //colocando borde a pestaña correspondiente
-      actualtab =
+      actualTab =
         document.getElementsByClassName("destinationTab")[actualPageLastChar];
-      actualtab.style.borderBottom = "2px solid white";
-      actualtab.style.cssText = "text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.6);"
-      
+      actualTab.style.cssText =
+        "text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.6);";
+      actualTab.style.borderBottom = "2px solid white";
+
       navActualPage = document.querySelectorAll(".link-page")[pageNumber];
       navActualPage.classList.remove("link-page-hover");
-
       //agregando borde a la pagina actual nav actual
       navActualPage.style.borderBottom = "2px solid white";
       navActualPage.classList.remove("link-page-hover");
@@ -397,8 +387,6 @@ document.getElementById("containerTabs").style.display = "flex";
     04 Technology
 ######################################################################
 */ case "technology":
-      //alert(`url("${pageContent.images.portrait}")`)
-
       document.getElementById("textBeforeTitle").classList.add("subHeadTech");
 
       //eliminando img tag para trabajar con background-img
@@ -410,7 +398,7 @@ document.getElementById("containerTabs").style.display = "flex";
       ).style.background = `url("${pageContent.images.landscape}")`;
       document
         .getElementById("containerTabs")
-        .classList.add("containerNumbesTech");
+        .classList.add("containerNumbersTech");
 
       //borrando los bordes en tabs planets para colocar el correspondiente y colocando hover
       document.querySelectorAll(".tabNumbers").forEach((element) => {
@@ -444,48 +432,45 @@ document.getElementById("containerTabs").style.display = "flex";
 */
 function mediaQuery(page, pageContent, pageNumber) {
   let mqls = [
-    window.matchMedia("screen and (min-width: 768px) and (max-width: 991px"),
-    window.matchMedia("screen and (min-width: 992px)"),
+    window.matchMedia("screen and (min-width: 768px) and (max-width: 1199px"),
+    window.matchMedia("screen and (min-width: 1200px)"),
   ];
 
   document.querySelectorAll(".link-page").forEach((element) => {
     element.style.cssText = `
     text-shadow:none;
-    `
+    `;
   });
   document.getElementsByClassName("link-page")[pageNumber].style.cssText = `
   text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.6);
-  `
-
-  console.log(pageNumber)
+  `;
+  setBodyBackground(page, "mobile", "jpg");
 
   function test(mql) {
-    if (!mqls[0].matches && !mqls[1].matches) {/*
+    if (!mqls[0].matches && !mqls[1].matches) {
+      /*
 ######################################################################
-  moviles
+  móviles
 ######################################################################
 */
-      console.log("SM");
-      
-      setBodyBackgorund(page, "mobile")
+      //console.log("SM");
 
       //aparecer funcion sidebar
       document.getElementById("sidebar").classList.remove("sidebar-nonSmall");
 
       //quitar bordes molestos de pantallas grandes en pantalla pequeña
       document.querySelectorAll(".link-page")[pageNumber].style.border = "0px";
-
-
-    } else if (mqls[0].matches) {/*
+    } else if (mqls[0].matches) {
+      /*
 ######################################################################
   Tablets
 ######################################################################
 */
-      console.log("MD");
-      setBodyBackgorund(page, "tablet") 
-      sidebarToNav()
+      //console.log("MD");
+      setBodyBackground(page, "tablet", "jpg");
+      //cambiar sidebar a modo navegación superior
+      sidebarToNav();
 
-      //en caso de ser una pagina noHome
       //el padding top de main
       document
         .getElementsByTagName("main")[0]
@@ -564,141 +549,141 @@ function mediaQuery(page, pageContent, pageNumber) {
 
           break;
       }
-
-    } else if (mqls[1].matches) {/*
+    } else if (mqls[1].matches) {
+      /*
 ######################################################################
   Desktops
 ######################################################################
-*/    console.log("LG");
+*/ //console.log("LG");
 
-      sidebarToNav()
-/*
+      setBodyBackground(page, "desktop", "jpg");
+      sidebarToNav();
+      /*
 ######################################################################
   00 Home Desktop
 ######################################################################
-*/switch (page) {
-    case "home":
-      document.getElementsByTagName("main")[0].removeAttribute("class");
-      document
-        .getElementsByTagName("main")[0]
-        .classList.add("main-home-desktop");
-      setBodyBackgorund(page, "desktop") 
-        document
-        .querySelector("#textBeforeTitle")
-        .classList.add("textBeforeTitle-home-desktop");
-        document
-        .querySelector("#main-title")
-        .classList.add("main-title-home-desktop");
-        document
-        .querySelector("#textAfterTitle")
-        .classList.add("textAfterTitle-home-desktop");
-        
-        break
-/*
+*/ switch (page) {
+        case "home":
+          document.getElementsByTagName("main")[0].removeAttribute("class");
+          document
+            .getElementsByTagName("main")[0]
+            .classList.add("main-home-desktop");
+          document
+            .querySelector("#textBeforeTitle")
+            .classList.add("textBeforeTitle-home-desktop");
+          document
+            .querySelector("#main-title")
+            .classList.add("main-title-home-desktop");
+          document
+            .querySelector("#textAfterTitle")
+            .classList.add("textAfterTitle-home-desktop");
+          break;
+        /*
 ######################################################################
   01 Destinations
 ######################################################################
-*/  case "destination":
-        document
-        .getElementsByTagName("main")[0]
-        .classList.add("main-destination-desktop");
-        document
-        .querySelector("#textBeforeTitle")
-        .classList.add("textBeforeTitle-destination-desktop");
-        document
-        .querySelector("#mainImg")
-        .classList.add("mainImg-destination-desktop-desktop");
-        document
-        .querySelector("#containerTabs")
-        .classList.add("containerTabs-destination-desktop");
-        document
-        .querySelector("#main-title")
-        .classList.add("main-title-destination-desktop");  
-        document
-        .querySelector("#textAfterTitle")
-        .classList.add("textAfterTitle-destination-desktop");
-    
-    document.querySelector("body > main > div:nth-child(8)")
-    .classList.add("planetDataContainer-destination-desktop");
+*/ case "destination":
+          document
+            .getElementsByTagName("main")[0]
+            .classList.add("main-destination-desktop");
+          document
+            .querySelector("#textBeforeTitle")
+            .classList.add("textBeforeTitle-destination-desktop");
+          document
+            .querySelector("#mainImg")
+            .classList.add("mainImg-destination-desktop-desktop");
+          document
+            .querySelector("#containerTabs")
+            .classList.add("containerTabs-destination-desktop");
+          document
+            .querySelector("#main-title")
+            .classList.add("main-title-destination-desktop");
+          document
+            .querySelector("#textAfterTitle")
+            .classList.add("textAfterTitle-destination-desktop");
+          document
+            .querySelector("body > main > div:nth-child(8)")
+            .classList.add("planetDataContainer-destination-desktop");
+          break;
 
-      break
-    case "crew":
-      document
-      .getElementsByTagName("main")[0]
-      .classList.add("main-crew-desktop");
-      document
-      .querySelector("#textBeforeTitle")
-      .classList.add("textBeforeTitle-crew-desktop");
-      document
-      .querySelector("#mainImg")
-      .classList.add("mainImg-crew-desktop");
-      document
-      .querySelector("#containerTabs")
-      .classList.add("containerTabs-crew-desktop");
-      document
-      .querySelector("#subTitle")
-      .classList.add("subTitle-crew-desktop");  
-      document
-      .querySelector("#main-title")
-      .classList.add("main-title-crew-desktop");  
-      document
-      .querySelector("#textAfterTitle")
-      .classList.add("textAfterTitle-crew-desktop");
-      break
+        case "crew":
+          document
+            .getElementsByTagName("main")[0]
+            .classList.add("main-crew-desktop");
+          document
+            .querySelector("#textBeforeTitle")
+            .classList.add("textBeforeTitle-crew-desktop");
+          document
+            .querySelector("#mainImg")
+            .classList.add("mainImg-crew-desktop");
+          document
+            .querySelector("#containerTabs")
+            .classList.add("containerTabs-crew-desktop");
+          document
+            .querySelector("#subTitle")
+            .classList.add("subTitle-crew-desktop");
+          document
+            .querySelector("#main-title")
+            .classList.add("main-title-crew-desktop");
+          document
+            .querySelector("#textAfterTitle")
+            .classList.add("textAfterTitle-crew-desktop");
+          break;
 
-    case "technology":
-    
-      document.getElementById("imgTechDiv").style.background = `url("${pageContent.images.portrait}")`;
-
-    
-      document
-      .getElementsByTagName("main")[0]
-      .classList.add("main-technology-desktop");
-      document
-      .querySelector("#textBeforeTitle")
-      .classList.add("textBeforeTitle-technology-desktop");
-      document
-      .querySelector("#imgTechDiv")
-      .classList.add("imgTechDiv-technology-desktop");
-      document
-      .querySelector("#containerTabs")
-      .classList.add("containerTabs-technology-desktop");
-      document
-      .querySelector("#subTitle")
-      .classList.add("subTitle-technology-desktop");  
-      document
-      .querySelector("#main-title")
-      .classList.add("main-title-technology-desktop");  
-      document
-      .querySelector("#textAfterTitle")
-      .classList.add("textAfterTitle-technology-desktop");
-      break
-
-}
+        case "technology":
+          document.getElementById(
+            "imgTechDiv"
+          ).style.background = `url("${pageContent.images.portrait}")`;
+          document
+            .getElementsByTagName("main")[0]
+            .classList.add("main-technology-desktop");
+          document
+            .querySelector("#textBeforeTitle")
+            .classList.add("textBeforeTitle-technology-desktop");
+          document
+            .querySelector("#imgTechDiv")
+            .classList.add("imgTechDiv-technology-desktop");
+          document
+            .querySelector("#containerTabs")
+            .classList.add("containerTabs-technology-desktop");
+          document
+            .querySelector("#subTitle")
+            .classList.add("subTitle-technology-desktop");
+          document
+            .querySelector("#main-title")
+            .classList.add("main-title-technology-desktop");
+          document
+            .querySelector("#textAfterTitle")
+            .classList.add("textAfterTitle-technology-desktop");
+          break;
+      }
     }
   }
+
+  //activacion del evento de tamaño de pantalla
   for (let i = 0; i < mqls.length; i++) {
     test(mqls[i]);
     mqls[i].addListener(test);
   }
 }
 
-//funcion para aplicar el fondo
-function setBodyBackgorund(page, device) {
-bodyBackground = `black url("assets/${page}/background-${page}-${device}.jpg") no-repeat`;
-document.body.style.background = bodyBackground;
+//aplicamos fondo
+function setBodyBackground(page, device, format) {
+  bodyBackground = `black url("assets/${page}/background-${page}-${device}.${format}") no-repeat`;
+  document.body.style.background = bodyBackground;
 }
 
-      //conviertiendo sidebar to nav (notSmall)
-function sidebarToNav(){
-      document.getElementById("sidebar").classList.add("sidebar-nonSmall");
-      //quitando bordes a las otros links del nav y colocandole efecto hover
-      document.querySelectorAll(".link-page").forEach((element) => {
-        element.style.borderBottom = "none";
-        element.classList.add("link-page-hover");
-      });
-      //agregando borde a la pagina actual
-      navActualPage = document.querySelectorAll(".link-page")[pageNumber];
-      navActualPage.style.borderBottom = "2px solid white";
-      navActualPage.classList.remove("link-page-hover");
+//conviertiendo sidebar to nav (notSmall)
+function sidebarToNav() {
+  document.getElementById("sidebar").classList.add("sidebar-nonSmall");
+
+  //quitando bordes a las otros links del nav y colocandole efecto hover
+  document.querySelectorAll(".link-page").forEach((element) => {
+    element.style.borderBottom = "none";
+    element.classList.add("link-page-hover");
+  });
+  //agregando borde a la pagina actual
+  navActualPage = document.querySelectorAll(".link-page")[pageNumber];
+  navActualPage.style.borderBottom = "2px solid white";
+  navActualPage.classList.remove("link-page-hover");
 }

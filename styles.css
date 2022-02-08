@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap");
+
 html body {
   overflow-x: hidden !important;
 
@@ -36,8 +37,9 @@ html body {
   height: 40px;
 }
 
-#logo:hover, .explore:hover {
-  cursor:pointer;
+#logo:hover,
+.explore:hover {
+  cursor: pointer;
 }
 
 /* -------------- Burger styling ----------------- */
@@ -59,10 +61,8 @@ html body {
   z-index: 5;
   top: 22px;
   right: 17;
-
   width: 21px;
   height: 21px;
-
   transition: all 0.5s ease-out;
   transform: rotate(0.5turn);
 }
@@ -70,13 +70,10 @@ html body {
 main {
   display: flex;
   flex-direction: column;
-
   margin-top: 0;
   margin-bottom: 30px;
   padding-top: 13.97vh;
-
   align-items: center;
-
   overflow-x: hidden !important;
 }
 
@@ -92,12 +89,9 @@ h1 {
     150px
   );
   font-weight: 400;
-
   margin: -28px 0 0 0;
   padding: 0.5rem 0rem;
-
   text-transform: uppercase;
-
   color: white;
 }
 
@@ -135,69 +129,68 @@ h1 + p {
     18px
   );
   line-height: 1.56rem;
-
   margin: 0 11%;
   padding: 0.5625rem 0 20px 0;
-
   text-align: center;
 }
 
 .explore {
   display: flex;
-
   width: 150px;
   height: 150px;
   margin-top: 10vh;
   margin-bottom: 30px;
-
   vertical-align: middle;
-
   border-radius: 100%;
   background: white;
-
   align-items: center;
   justify-content: center;
-
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-
-  border:0px solid rgba(85, 89, 109, .6);
+  border: 0px solid rgba(85, 89, 109, 0.6);
   -webkit-animation: breathing 5s ease-out infinite normal;
-  animation: breathing 5s ease-out infinite normal; 
+  animation: breathing 5s ease-out infinite normal;
 }
 
 @-webkit-keyframes breathing {
   0% {
-    
-    border:0px solid rgba(85, 89, 109, .3);
+    border: 0px solid rgba(85, 89, 109, 0.3);
   }
 
   25% {
-    border: 12px solid rgba(85, 89, 109, .4);
-    
+    border: 12px solid rgba(85, 89, 109, 0.4);
   }
 
   60% {
-    border:4px solid rgba(85, 89, 109, .3);
+    border: 4px solid rgba(85, 89, 109, 0.3);
   }
 
   100% {
-    
-    border:0px solid rgba(85, 89, 109, .2);
+    border: 0px solid rgba(85, 89, 109, 0.2);
   }
 }
 .explore:hover {
-  box-shadow: 0px 0px 1px 30px rgba(255, 255, 255, .2);
-  animation: shutter-in-top .3s ease 0s 1 normal none;
+  box-shadow: 0px 0px 1px 30px rgba(255, 255, 255, 0.2);
+  -webkit-animation: shutter-in-top 0.3s ease 0s 1 normal none;
+          animation: shutter-in-top 0.3s ease 0s 1 normal none;
+}
+
+@-webkit-keyframes shutter-in-top {
+  0% {
+    box-shadow: 0px 0px 1px 0px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0px 0px 1px 30px rgba(255, 255, 255, 0.2);
+  }
 }
 
 @keyframes shutter-in-top {
-  0%{
-    box-shadow: 0px 0px 1px 0px rgba(255, 255, 255, .2);
+  0% {
+    box-shadow: 0px 0px 1px 0px rgba(255, 255, 255, 0.2);
   }
-  100%{
-    box-shadow: 0px 0px 1px 30px rgba(255, 255, 255, .2);
+  100% {
+    box-shadow: 0px 0px 1px 30px rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -207,12 +200,9 @@ h1 + p {
     calc(1.1267605633802817vw + 15.774647887323944px),
     32px
   );
-
   display: block;
-
   letter-spacing: 1.25px;
   text-transform: uppercase;
-
   color: #0b0d17;
 }
 
@@ -225,25 +215,20 @@ h1 + p {
   position: fixed;
   z-index: 0;
   right: -254px;
-
   overflow: hidden;
-
   width: 0;
-
   transition: 0.6s all ease-out;
 }
 
 .sidebar-open {
-  position: fixed;
+  position: fixed;  
   z-index: 5;
   right: 0;
-
   overflow: hidden;
-
   width: 254px;
   height: 100%;
-
-  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
 }
 
 .sidebarChildContainer {
@@ -324,8 +309,6 @@ p {
   text-transform: uppercase;
 
   color: white;
-
-  
 }
 
 .main-title-destination {
@@ -377,7 +360,7 @@ body > main > div:nth-child(8) {
 }
 
 .dataDestination {
-  font-family: Bellefair;
+  font-family: "Bellefair", serif;
   font-size: 1.75rem;
   font-weight: 400;
 
@@ -438,7 +421,7 @@ body > main > div:nth-child(8) {
 }
 
 .subtitleCrew {
-  font-family: Bellefair;
+  font-family: "Bellefair", serif;
   font-size: clamp(16px, calc(1.971830985915493vw + 8.6056338028169px), 37px);
 
   margin: 0;
@@ -486,7 +469,7 @@ html body {
 }
 
 .beforeName {
-  font-family: "Barlow Condensed";
+  font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(
     14px,
     calc(0.18779342723004694vw + 13.295774647887324px),
@@ -494,31 +477,26 @@ html body {
   );
   font-weight: 400;
   line-height: 17px;
-
   height: 17px;
   padding-top: 12px;
-
   text-align: center;
   letter-spacing: 2.3625px;
   text-transform: uppercase;
-
   color: #d0d6f9;
   overflow-y: hidden;
 }
 
-.containerNumbesTech {
+.containerNumbersTech {
   display: flex;
-
   width: 150px;
   padding-top: 33px;
-
   justify-content: space-between;
   align-items: center;
 }
 
 .tabNumbers {
-  font-family: "Bellefair";
-  font-size: var(--title-heigth-desktop);
+  font-family: "Bellefair", serif;
+  font-size: 1rem;
   line-height: 40px;
   width: 40px;
   height: 40px;
@@ -549,18 +527,16 @@ html body {
 ######################################################################
 */
 @media only screen and (min-width: 768px) {
+  #logo {
+    width: 48px;
+    height: 48px;
+    margin: 0px 0px 0px 14px;
+    position: relative;
+  }
 
-#logo {
-  width: 48px;
-  height: 48px;
-  margin: 0px 0px 0px 14px;
-  position: relative;
-}
-
-#sidebar {
-  position: absolute;
-}
-
+  #sidebar {
+    position: absolute;
+  }
 
   /*
 ######################################################################
@@ -649,8 +625,6 @@ html body {
     padding-top: 50px;
   }
 
-
-
   .crewSubHeading,
   .textBeforeTitle-destination,
   .subHeadTech,
@@ -672,6 +646,9 @@ html body {
   .containerTabs-tablet {
     width: 40%;
     margin-top: 16px;
+
+    height: 74px;
+    box-sizing: border-box;
   }
 
   .main-title-destination-tablet {
@@ -694,10 +671,12 @@ html body {
   02 Crew Tablet
 ######################################################################
 */
+
+  /*before I should use Flexbox, I realized late */
   .main-crew-tablet {
     display: grid;
     height: 100%;
-    padding-top:50px;
+    padding-top: 50px;
     margin-bottom: 0px;
     grid-template-rows: repeat(5, 1fr), 5fr;
     grid-template-columns: 1fr;
@@ -792,10 +771,6 @@ html body {
 ######################################################################
 */
 @media only screen and (min-width: 1200px) {
-:root {
-  --title-heigth-desktop:clamp(56px,calc(4.131455399061033vw + 40.50704225352113px),120px);
-}
-
   #logo {
     display: relative !important;
     margin: 44px 0px 0px 35px;
@@ -808,253 +783,240 @@ html body {
     display: inline;
   }
 
-.sidebar {
-  margin-top:40px;
-  padding-left: 66px;
-  
-  width: 830px;
-  display:initial;
-  right: 0px;
-  
-}
+  .sidebar {
+    margin-top: 40px;
+    padding-left: 66px;
 
-main {
-  padding-top: 0px;
-}
+    width: 830px;
+    display: initial;
+    right: 0px;
+  }
 
-/*
+  main {
+    padding-top: 0px;
+  }
+
+  /*
 ######################################################################
   00 Home Desktop
 ######################################################################
-Todo queda pendiente aplicar la distribucion de contenido en home
 */
 
-.main-home-desktop {
-  gap: 24px 100px;
-  padding: 0px 169px 0px 169px;
-  display: grid;
-  height: auto; /*calc(100vh - 88px);*/
-  margin-bottom: 0px;
-  grid-template-rows: .5fr .7fr 160px 1fr;
-  grid-template-columns: 1fr 1fr;
-  place-items:center flex-start;
-  grid-template-areas:
+  .main-home-desktop {
+    gap: 24px 100px;
+    padding: 0px 169px 0px 169px;
+    display: grid;
+    height: auto; /*calc(100vh - 88px);*/
+    margin-bottom: 0px;
+    grid-template-rows: 0.5fr 0.7fr 160px 1fr;
+    grid-template-columns: 1fr 1fr;
+    place-items: center flex-start;
+    grid-template-areas:
       "none         none"
       "subHead   button"
       "title        button"
       "content      button";
-  z-index: -3 !important;
-}
+    z-index: -3 !important;
+  }
 
+  .textBeforeTitle-home-desktop {
+    grid-area: subHead;
+    place-self: center flex-start;
+    height: auto;
+    width: 100%;
+    margin: 0px;
+    margin-top: 0px;
+  }
 
-.textBeforeTitle-home-desktop {
-grid-area: subHead;
-place-self:  center flex-start;
-height: auto;
-width: 100%;
-margin: 0px;
-margin-top: 0px;
-}
+  .main-title-home-desktop {
+    grid-area: title;
+    place-self: center flex-start;
+    margin: 0px;
+    padding: 0px;
+  }
 
-.main-title-home-desktop {
-grid-area: title;
-place-self: center flex-start;
-margin: 0px;
-padding: 0px;
-}
+  .textAfterTitle-home-desktop {
+    grid-area: content;
+    place-self: flex-start flex-start;
+    text-align: justify;
+    padding: 0px;
+    margin: 0px;
+    line-height: 32px;
+  }
 
-.textAfterTitle-home-desktop {
-grid-area: content;
-place-self: flex-start flex-start;
-text-align: justify;
-padding: 0px;
-margin: 0px;
-line-height: 32px;
-}
+  .explore {
+    grid-area: button;
+    width: 274px;
+    height: 274px;
+    margin: 0px 10% 0px 37%;
+  }
 
-.explore {
-  grid-area: button;
-  width: 274px;
-  height: 274px;
-  margin: 0px 10% 0px 37%;
-
-}
-
-
-  
-
-
-
-/*
+  /*
 ######################################################################
   01 Destinations Desktop
 ######################################################################
 */
 
-.main-destination-desktop {
-  gap: 24px 100px;
-  padding: 0px 169px 0px 12vw;
-  display: grid;
-  grid-template-rows: 105px 1fr 19.5px 123px auto auto .2fr;
-  /*height:initial;/*calc(100vh - 88px);*/
-  margin-bottom: 0px;
-  grid-template-columns: 1.3fr 1fr;
-  place-items: flex-start  flex-start;
-  overflow-x: hidden;
-  overflow-y: visible;
-  grid-template-areas:
+  .main-destination-desktop {
+    gap: 24px 100px;
+    padding: 0px 169px 0px 12vw;
+    display: grid;
+    grid-template-rows: 105px 1fr 19.5px 123px auto auto 0.2fr;
+    /*height:initial;/*calc(100vh - 88px);*/
+    margin-bottom: 0px;
+    grid-template-columns: 1.3fr 1fr;
+    place-items: flex-start flex-start;
+    overflow-x: hidden;
+    overflow-y: visible;
+    grid-template-areas:
       ".          .      "
       "subHead       none"
       ".             tabs"
       "imgPlanet    title"
       "imgPlanet  content"
       "imgPlanet     data";
-  z-index: -3 !important;
-}
+    z-index: -3 !important;
+  }
 
-.textBeforeTitle-destination-desktop {
-grid-area: subHead;
-width: 100%;
-margin: 0px 0px 0px 0px;
-place-self:flex-start flex-start;
-}
+  .textBeforeTitle-destination-desktop {
+    grid-area: subHead;
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+    place-self: flex-start flex-start;
+  }
 
-.mainImg-destination-desktop-desktop {
-grid-area: imgPlanet;
-width: clamp(350px, calc(25rem + ((1vw - 12px) * 18.75)), 445px);
-height: clamp(350px, calc(25rem + ((1vw - 12px) * 18.75)), 445px);
-margin:0px;
-margin-left: clamp(-15px, calc(0.9375rem + ((1vw - 12px) * 14.15)), 48.96px);
-}
+  .mainImg-destination-desktop-desktop {
+    grid-area: imgPlanet;
+    width: clamp(350px, calc(25rem + ((1vw - 12px) * 18.75)), 445px);
+    height: clamp(350px, calc(25rem + ((1vw - 12px) * 18.75)), 445px);
+    margin: 0px;
+    margin-left: clamp(
+      -15px,
+      calc(0.9375rem + ((1vw - 12px) * 14.15)),
+      48.96px
+    );
+  }
 
-.containerTabs-destination-desktop {
-grid-area: tabs;
-width: 280px;
+  .containerTabs-destination-desktop {
+    grid-area: tabs;
+    width: 280px;
+  }
 
-}
+  .destinationTab {
+    padding-top: 10px;
+  }
 
-.destinationTab {
-  padding-top: 10px;
-} 
+  .main-title-destination-desktop {
+    grid-area: title;
+    padding-bottom: 0px;
+    place-self: flex-end flex-start;
+  }
 
-.main-title-destination-desktop {
-grid-area: title;
-padding-bottom:0px;
-place-self:flex-end flex-start;
+  .textAfterTitle-destination-desktop {
+    grid-area: content;
+    padding: 0px;
+    width: 440px;
+    text-align: left;
+    margin: 0px;
+    text-justify: initial;
+    line-height: 31px;
+    padding-bottom: 50px;
+  }
 
-}
-
-.textAfterTitle-destination-desktop {
-grid-area: content;
-padding:0px;
-width: 440px;
-text-align: left;
-margin:0px;
-text-justify:initial;
-line-height: 31px;
-padding-bottom: 50px;
-}
-
-.planetDataContainer-destination-desktop {
-grid-area: data;
-justify-content: space-between;
-width: 85% !important;
-padding:30px 0px;
-
-}
-/*
+  .planetDataContainer-destination-desktop {
+    grid-area: data;
+    justify-content: space-between;
+    width: 85% !important;
+    padding: 30px 0px;
+  }
+  /*
 ######################################################################
   02 Crew Desktop
 ######################################################################
 */
 
-.main-crew-desktop {
-  gap: 24px 130px;
-  padding: 0px 169px 0px 12vw;
-  display: grid;
-  grid-template-rows: 105px .535fr 14px auto auto .4fr;
-  /*height:initial;/*calc(100vh - 88px);*/
-  margin-bottom: 0px;
-  grid-template-columns: 1.3fr 1fr;
-  place-items: flex-start  flex-start;
-  overflow-y: hidden;
-  grid-template-areas:
+  .main-crew-desktop {
+    gap: 24px 130px;
+    padding: 0px 169px 0px 12vw;
+    display: grid;
+    grid-template-rows: 105px 0.535fr 14px auto auto 0.4fr;
+    margin-bottom: 0px;
+    grid-template-columns: 1.3fr 1fr;
+    place-items: flex-start flex-start;
+    overflow-y: hidden;
+    grid-template-areas:
       ".                .      "
       "subHead          imgCrew"
       "professionCrew   imgCrew"
       "nameCrew         imgCrew"
       "contentCrew      imgCrew"
       "bullets          imgCrew";
-  z-index: -3 !important;
-}
+    z-index: -3 !important;
+  }
 
-.textBeforeTitle-crew-desktop {
-  grid-area: subHead;
-  
-  /*margin-top: 156px;*/
-  margin-top: 0px;
-  margin-left: 0px;
-  width: 100%;
-}
+  .textBeforeTitle-crew-desktop {
+    grid-area: subHead;
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 100%;
+  }
 
-.mainImg-crew-desktop {
-grid-area: imgCrew;
-width: auto;
+  .mainImg-crew-desktop {
+    grid-area: imgCrew;
+    width: auto;
+    margin: 0px;
+    height: auto;
+    max-height: 640px;
+    place-self: flex-end center;
+    border-bottom: 1px solid gray;
+  }
 
-margin: 0px;
-height: auto;
-max-height:640px;
-place-self:flex-start;
-}
+  .subTitle-crew-desktop {
+    grid-area: professionCrew;
+  }
 
+  .main-title-crew-desktop {
+    grid-area: nameCrew;
+    overflow-x: hidden;
+    place-self: flex-end flex-start;
+    width: 100%;
+  }
 
-.subTitle-crew-desktop {
-  grid-area: professionCrew;
-}
+  .textAfterTitle-crew-desktop {
+    grid-area: contentCrew;
+    padding: 0px;
+    margin: 0px;
+    width: 440px;
+    height: 130px;
+    text-justify: auto;
+    text-align: left;
+  }
 
-.main-title-crew-desktop {
-grid-area: nameCrew;
-overflow-x: hidden;
-place-self: flex-end flex-start;
-width: 100%;
-}
+  .containerTabs-crew-desktop {
+    grid-area: bullets;
+    width: 23%;
+    margin: 0px;
+    padding: 20px 0px 50px 0px;
+    border: 0px;
+    display: flex !important;
+    text-align: left;
+  }
 
-.textAfterTitle-crew-desktop {
-grid-area: contentCrew;
-padding:0px;
-margin: 0px;
-width: 440px;
-height: 130px;
-text-justify: auto;
-text-align: left;
-}
-
-.containerTabs-crew-desktop {
-  grid-area: bullets;
-  width: 23%;
-  margin: 0px;
-  padding: 20px 0px 50px 0px;
-  border: 0px;
-  display: flex !important;
-  text-align: left;
-}
-
-
-/*
+  /*
 ######################################################################
   03 Technology Desktop
 ######################################################################
 */
-.main-technology-desktop {
-  gap: 24px 69px;
-  padding: 0px 0px 0px 12vw;
-  display: grid;
-  grid-template-rows: 105px auto .2fr 0fr auto .05fr .4fr .09fr;
-  margin-bottom: 0px;
-  grid-template-columns: 90px 1.8fr 2fr;
-  place-items: flex-start flex-start;
-  overflow-y: visible;
-  grid-template-areas:
+  .main-technology-desktop {
+    gap: 24px 69px;
+    padding: 0px 0px 0px 12vw;
+    display: grid;
+    grid-template-rows: 105px auto 0.2fr 0fr auto 0.05fr 0.4fr 0.09fr;
+    margin-bottom: 0px;
+    grid-template-columns: 90px 1.8fr 2fr;
+    place-items: flex-start flex-start;
+    overflow-y: visible;
+    grid-template-areas:
       ".                .              .      "
       "subHead          subHead        .      "
       ".                .              techImg"
@@ -1063,64 +1025,59 @@ text-align: left;
       "containerNumbers techContent    techImg"
       ".                .              techImg"
       ".                .              .      ";
-  z-index: -3 !important;
-}
+    z-index: -3 !important;
+  }
 
-.textBeforeTitle-technology-desktop {
-  grid-area: subHead;
-  margin-left: 0px;
-  margin-top:0px;
-}
+  .textBeforeTitle-technology-desktop {
+    grid-area: subHead;
+    margin-left: 0px;
+    margin-top: 0px;
+  }
 
-.containerTabs-technology-desktop {
-  grid-area: containerNumbers;
-  padding-top: 0px;
-  width: 95px;
-  height: 90%;
-  flex-direction:column;
-  place-self:center flex-start;
+  .containerTabs-technology-desktop {
+    grid-area: containerNumbers;
+    padding-top: 0px;
+    width: 95px;
+    height: 90%;
+    flex-direction: column;
+    place-self: center flex-start;
+  }
 
-}
+  .tabNumbers {
+    border: 0px;
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+    line-height: 80px;
+  }
 
-.tabNumbers {
-border: 0px;
-  width: 80px;
-  height: 80px;
-  font-size:32px;
-  line-height: 80px ;
-}
+  .imgTechDiv-technology-desktop {
+    grid-area: techImg;
+    height: 100%;
+    margin: 0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+  }
 
-.imgTechDiv-technology-desktop {
-  grid-area: techImg;
-  height: 100%;
-  margin: 0px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover !important;
-}
+  .subTitle-technology-desktop {
+    grid-area: theTerminology;
+    place-self: flex-start !important;
+    padding: 0px;
+    margin: 0px;
+  }
 
+  .main-title-technology-desktop {
+    grid-area: mainTitle;
+    padding: 0px;
+  }
 
-.subTitle-technology-desktop {
-  grid-area: theTerminology;
-  place-self: flex-start !important;
-padding:0px;
-  margin: 0px;
-}
-
-.main-title-technology-desktop {
-  grid-area: mainTitle; 
-  padding:0px;
-}
-
-.textAfterTitle-technology-desktop {
-  grid-area: techContent;
-  padding:0px;
-  margin:0px;
-  height: 215px;
-  line-height: 1.75;
-  text-align: left;
-}
-
-
-
+  .textAfterTitle-technology-desktop {
+    grid-area: techContent;
+    padding: 0px;
+    margin: 0px;
+    height: 215px;
+    line-height: 1.75;
+    text-align: left;
+  }
 }

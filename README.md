@@ -1,19 +1,26 @@
 # Space tourism website
 
-## 🏗 👷🏻🚧In construction🚧
+🔗[Live web aqui 🌟🌠   ⬅](https://leox23.github.io/space-tourism-website/)
 
-El sitio web solo tiene un index.html, todo trabajado desde JSON y JavaScript... Todo vanilla (no sass transpiler, no frameworks de css ni de JavaScript )
+✅ Vista Desktop lista (1200-1440px  900px).
 
-🔗[Live web aqui ⬅](https://leox23.github.io/space-tourism-website/)
+✅ Vista Tablet lista (765-1199px  1024px)
 
-🚧 Pequeños detalles y animaciones.
+✅ Vista Móvil lista (375px  650px~) 
 
-✅ Vista Desktop lista (x1200min ~ 1440).
+## Info adicional:
 
-✅ Vista Tablet lista (x768min).
-
-✅ Vista Móvil lista (x375min) Pendiente:
-
-🐞 Los bullets de la pagina 02 Crew no se estan dejando agregar clase para efecto Hover.
+- Se uso solo un archivo html.
+- Se usaron unicamente tecnologias vanilla del FrontEnd.
+- El contenido es escrito desde JavaScript, leido desde un JSON.
 
 ![Design preview for the Space tourism website coding challenge](./preview.jpg)
+
+
+
+ Probado en:
+
+- ✅ Chrome y Edge OK
+- 📛 Firefox por mas que le ponga prefijos y mañas no se ve correctamente, queda pendiente.
+
+⚠️ Es necesario refactorizar.

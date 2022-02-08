@@ -14,7 +14,7 @@
   <title>Space tourism website</title>
 </head>
 
-<body onLoad="actualPage = '0'; extractJSON('data.json', (err, data) => {
+<body onLoad="actualPage = '2'; extractJSON('data.json', (err, data) => {
               console.log(data);
 });">
   <nav class="sidebar" id="sidebar">
@@ -54,6 +54,7 @@
     <div onClick="actualPage = '1'; extractJSON('data.json', (err, data) => {});" class="explore" style="display:none;">
       <p id="exploreText"></p>
     </div>
+    <hr>
   </main>
   <script type="application/json" src="data.json"></script>
   <script src="script.js"></script>

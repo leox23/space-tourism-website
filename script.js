@@ -145,6 +145,8 @@ function clearPage() {
   document.getElementById("containerTabs").textContent = "";
   document.getElementById("containerTabs").style.display = "none";
 
+  document.getElementsByTagName("hr")[0].style.display = ("none");
+  
   //borrando detalles de planetas
   document.getElementsByClassName(
     "containerDescriptionDestinations"
@@ -558,12 +560,16 @@ function mediaQuery(page, pageContent, pageNumber) {
 
       setBodyBackground(page, "desktop", "jpg");
       sidebarToNav();
+      
+      document.getElementsByTagName("hr")[0].removeAttribute("class");
+      document.getElementsByTagName("hr")[0].style.display = ("initial");
       /*
 ######################################################################
   00 Home Desktop
 ######################################################################
 */ switch (page) {
         case "home":
+          document.getElementsByTagName("hr")[0].classList.add("hrStyle")
           document.getElementsByTagName("main")[0].removeAttribute("class");
           document
             .getElementsByTagName("main")[0]
@@ -580,9 +586,11 @@ function mediaQuery(page, pageContent, pageNumber) {
           break;
         /*
 ######################################################################
-  01 Destinations
+  01 Destinations Desktop
 ######################################################################
 */ case "destination":
+
+          document.getElementsByTagName("hr")[0].classList.add("hrStyle")
           document
             .getElementsByTagName("main")[0]
             .classList.add("main-destination-desktop");
@@ -606,7 +614,13 @@ function mediaQuery(page, pageContent, pageNumber) {
             .classList.add("planetDataContainer-destination-desktop");
           break;
 
-        case "crew":
+/*
+######################################################################
+  02 Crew Desktop
+######################################################################
+*/      case "crew":
+
+          document.getElementsByTagName("hr")[0].classList.add("hrStyle")
           document
             .getElementsByTagName("main")[0]
             .classList.add("main-crew-desktop");
@@ -629,8 +643,12 @@ function mediaQuery(page, pageContent, pageNumber) {
             .querySelector("#textAfterTitle")
             .classList.add("textAfterTitle-crew-desktop");
           break;
-
-        case "technology":
+/*
+######################################################################
+  03 Technology Desktop
+######################################################################
+*/      case "technology":
+          document.getElementsByTagName("hr")[0].classList.add("hrStyle")
           document.getElementById(
             "imgTechDiv"
           ).style.background = `url("${pageContent.images.portrait}")`;

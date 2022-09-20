@@ -21,6 +21,6 @@
  Probado en:
 
 - ✅ Chrome y Edge OK
-- 📛 Firefox por mas que le ponga prefijos y mañas no se ve correctamente, queda pendiente.
+- 📛 Firefox por mas que le ponga prefijos y mañas la fuente no se ve correctamente, queda pendiente.
 
 ⚠️ Es necesario refactorizar.
